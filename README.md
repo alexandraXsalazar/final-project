@@ -8,29 +8,23 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 
 1. **Gestión de Asistencia**: Utilización de Arduino con lector de huellas digitales para registrar la asistencia de los estudiantes de manera eficiente y precisa.
 
-2. **Integración Web**: Integración con Django, Python y SQL para desarrollar una plataforma web que permita a los usuarios acceder al sistema desde cualquier dispositivo con conexión a internet.
-
-3. **Perfiles de Usuario**: Los usuarios se dividirán en dos tipos: estudiantes y profesores. Cada tipo de usuario tendrá acceso a funciones específicas y a su propio perfil personalizado.
+2. **Perfiles de Usuario**: Los usuarios se dividirán en dos tipos: estudiantes y profesores. Cada tipo de usuario tendrá acceso a funciones específicas y a su propio perfil personalizado.
 
 4. **Observaciones de Desempeño**: Los profesores tendrán la capacidad de agregar observaciones sobre el desempeño de los estudiantes, las cuales estarán disponibles únicamente para otros profesores.
 
 ## Funcionalidades Adicionales:
 
-1. **Análisis de Datos**: Utilización de Microsoft Power BI para generar informes interactivos sobre tendencias de asistencia y desempeño estudiantil. Esto ayudará a identificar estudiantes que necesiten atención adicional.
+1. **Análisis de Datos**: Utilización de Microsoft Power BI para generar informes interactivos sobre tendencias de asistencia.
 
 2. **Creación de Informes**: Desarrollo de informes interactivos con gráficos y tablas que muestren la asistencia y el desempeño de los estudiantes. Por ejemplo, gráficos de barras que comparen la asistencia promedio por clase.
 
-3. **Dashboards Personalizados**: Creación de dashboards personalizados para profesores y administradores, donde podrán ver resúmenes rápidos y métricas clave, como tasas de asistencia o rendimiento académico.
+3. **Notificaciones Automáticas**: Implementación de un sistema de notificaciones que informe a los estudiantes sobre su asistencia y a los profesores sobre las actualizaciones de desempeño estudiantil.
 
-4. **Compartir y Colaborar**: Publicación de informes y dashboards en el servicio de Power BI, permitiendo a los usuarios acceder a ellos desde cualquier dispositivo con conexión a internet.
+4. **Redes Sociales Educativas**: Funcionalidad que permita a los estudiantes y profesores interactuar y colaborar de manera similar a una red social, compartiendo recursos, participando en debates y formando comunidades de aprendizaje.
 
-5. **Notificaciones Automáticas**: Implementación de un sistema de notificaciones que informe a los estudiantes sobre su asistencia y a los profesores sobre las actualizaciones de desempeño estudiantil.
-
-6. **Redes Sociales Educativas**: Funcionalidad que permita a los estudiantes y profesores interactuar y colaborar de manera similar a una red social, compartiendo recursos, participando en debates y formando comunidades de aprendizaje.
-
-7. **Asiste de inteligencia Virtual **:  Asistente virtual que pueda responder preguntas frecuentes de los estudiantes y profesores.
+5. **Asiste de inteligencia Virtual **:  Asistente virtual que pueda responder preguntas frecuentes de los estudiantes y profesores.
    
-8. **Mini juego **: los jugadores controlarán un pato que debe atrapar bugs que caen desde la parte superior de la pantalla. El objetivo es atrapar la mayor cantidad de bugs posible antes de que lleguen al suelo.
+6. **Mini juego **: los jugadores controlarán un pato que debe atrapar bugs que caen desde la parte superior de la pantalla. El objetivo es atrapar la mayor cantidad de bugs posible antes de que lleguen al suelo.
 
 ## Tecnologías Utilizadas:
 
