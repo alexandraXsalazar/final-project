@@ -28,9 +28,14 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 
 6. **Redes Sociales Educativas**: Funcionalidad que permita a los estudiantes y profesores interactuar y colaborar de manera similar a una red social, compartiendo recursos, participando en debates y formando comunidades de aprendizaje.
 
+7. **Asiste de inteligencia Virtual **:  Asistente virtual que pueda responder preguntas frecuentes de los estudiantes y profesores.
+   
+8. **Mini juego **: los jugadores controlarán un pato que debe atrapar bugs que caen desde la parte superior de la pantalla. El objetivo es atrapar la mayor cantidad de bugs posible antes de que lleguen al suelo.
+
 ## Tecnologías Utilizadas:
 
 - Arduino con lector de huellas digitales
 - Django, Python y SQL para el desarrollo web
 - Microsoft Power BI para análisis de datos
 - Servicios como Firebase Cloud Messaging (FCM) para notificaciones automáticas
+- Chat GPT API
