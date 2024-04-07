@@ -33,3 +33,17 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 - Microsoft Power BI para análisis de datos
 - Servicios como Firebase Cloud Messaging (FCM) para notificaciones automáticas
 - Chat GPT API
+
+  ## Color Reference
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Blood red | ![#660000](https://via.placeholder.com/10/660000?text=+) #660000 |
+| Black bean | ![#470000](https://via.placeholder.com/10/470000?text=+) #470000 |
+| Maroon | ![#840000](https://via.placeholder.com/10/840000?text=+) #840000 |
+| Engeneering red | ![#D00000](https://via.placeholder.com/10/D00000?text=+) #D00000 |
+| Alice Blue | ![#F0F8FF](https://via.placeholder.com/10/F0F8FF?text=+) #F0F8FF |
+| Midnigth Blue| ![#101720](https://via.placeholder.com/10/101720?text=+) #101720 |
+| Jet | ![#333333](https://via.placeholder.com/10/333333?text=+) #333333 |
+| Dim's Gray | ![#737373](https://via.placeholder.com/10/737373?text=+) #737373 |
+| silver  | ![#ABABAB](https://via.placeholder.com/10/ABABAB?text=+) #ABABAB |
