@@ -17,6 +17,7 @@ class Class(models.Model):
 
     
 class Pc(models.Model):
+    id = models.AutoField(primary_key=True)
     number = models.IntegerField()
 
     
@@ -45,7 +46,7 @@ class Attendance(models.Model):
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE, related_name="cycle")
     class_group = models.ForeignKey(Class, on_delete=models.CASCADE, related_name="group")
     time = models.ForeignKey(Class, on_delete=models.CASCADE, related_name="time")
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="name")
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="name")
     check_in = models.TimeField(auto_now_add=True) 
     check_out = models.TimeField(auto_now_add=True)
     pc = models.ForeignKey(Pc, on_delete=models.CASCADE, related_name="number")
