@@ -36,7 +36,6 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 
   ## Color Reference
 
-
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | Oxford blue | ![#050A30](https://via.placeholder.com/10/050A30?text=+) #050A30 |
