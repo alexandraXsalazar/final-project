@@ -1,8 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class User(AbstractUser):
-    pass
+
 
 class Cycle(models.Model):
     name = models.CharField(max_length=50) 
@@ -11,14 +10,10 @@ class Cycle(models.Model):
     def __str__(self):
         return self.name
     
-class Class(models.Model):
-    group = models.CharField(max_length=3)
-    time = models.CharField(max_length=50)
-
-    
 class Pc(models.Model):
     id = models.AutoField(primary_key=True)
-    number = models.IntegerField()
+    numPC = models.IntegerField()
+    numLapTop = models.IntegerField()
 
     
 class Student(models.Model):
@@ -28,6 +23,7 @@ class Student(models.Model):
     fingerprint = models.CharField(max_length=50)
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE, related_name="students")
     class_group = models.ForeignKey(Class, on_delete=models.CASCADE, related_name="students")
+    password = models.CharField(max_length=50)
 
     
     def __str__(self):
@@ -37,6 +33,7 @@ class Staff(models.Model):
     id_staff = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     user = models.CharField(max_length=10)
+    password = models.CharField(max_length=50)
 
     
     def __str__(self):
@@ -44,7 +41,6 @@ class Staff(models.Model):
 
 class Attendance(models.Model):
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE, related_name="cycle")
-    class_group = models.ForeignKey(Class, on_delete=models.CASCADE, related_name="group")
     time = models.ForeignKey(Class, on_delete=models.CASCADE, related_name="time")
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="name")
     check_in = models.TimeField(auto_now_add=True) 
