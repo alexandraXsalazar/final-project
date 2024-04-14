@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from .models import Cycle, Pc, Student, Staff, Attendance, StaffFeedback, StuFeedback
 
-# Create your views here.
+def index(request):
+    return HttpResponse("hello world")
