@@ -48,3 +48,8 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 | Dim's Gray | ![#737373](https://via.placeholder.com/10/737373?text=+) #737373 |
 | silver  | ![#ABABAB](https://via.placeholder.com/10/ABABAB?text=+) #ABABAB |
 | School bus yellow  | ![#FEDE00](https://via.placeholder.com/10/FEDE00?text=+) #FEDE00 |
+
+
+## Fonts
+Inter semibold 
+Inter regular
