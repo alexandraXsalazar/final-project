@@ -52,4 +52,4 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 
 ## Fonts
 - Inter semibold 
-- Inter regular
+- "Inter regular
