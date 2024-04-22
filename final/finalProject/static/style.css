@@ -40,9 +40,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
+  
 
 *,
 *::before,
@@ -51,7 +49,7 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family:"Roboto Slab" sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -63,7 +61,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Roboto Slab", serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -190,7 +188,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family:"Roboto Slab", serif;
   font-size: 1em;
 }
 
@@ -371,13 +369,14 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "Oswald", sans-serif;
+  font-family: "Roboto Slab", serif
   font-weight: 500;
   line-height: 1.2;
 }
 
 h1, .h1 {
   font-size: 3rem;
+  font-family: "Roboto Slab", serif
 }
 
 h2, .h2 {
@@ -415,6 +414,7 @@ h6, .h6 {
   font-size: 5.5rem;
   font-weight: 300;
   line-height: 1.2;
+  font-family: "Roboto Slab", serif;
 }
 
 .display-3 {
@@ -6554,7 +6554,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Roboto Slab", serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6667,8 +6667,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-style: normal;
+  font-family: "Roboto Slab", serif;
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
@@ -10653,7 +10652,7 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family: "Roboto Slab", serif !important;
 }
 
 .text-justify {
@@ -10975,7 +10974,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Roboto Slab", serif;
   color: #f8f9fa;
   background: #050A30;
   box-sizing: border-box;
@@ -11173,7 +11172,7 @@ pre {
   visibility: hidden;
   -webkit-transition: all 0.2s linear 0s;
   transition: all 0.2s linear 0s;
-  font-family: "Oswald", sans-serif;
+  font-family: "Roboto Slab", serif
 }
 
 .affix {

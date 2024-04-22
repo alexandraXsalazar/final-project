@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Cycle, Pc, Student, Staff, Attendance, StaffFeedback, StuFeedback
+from .models import User, Cycle, Pc, Student, Staff, Attendance, StaffFeedback, StuFeedback
 # Register your models here.
+admin.site.register(User)
 admin.site.register(Student)
 admin.site.register(StuFeedback)
 admin.site.register(Cycle)
