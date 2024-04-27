@@ -1,20 +1,20 @@
-# Proyecto Final: Sistema de Gestión de Asistencia y Desempeño Estudiantil
+# Proyecto Final: Sistema de un curso(NeoCode) con Gestión de Asistencia usando huella digital y Desempeño Estudiantil
 
 ## Descripción del Proyecto:
 
-El proyecto consiste en desarrollar un sistema integral de gestión de asistencia estudiantil utilizando tecnología Arduino con lector de huellas digitales. Este sistema registrará tanto la hora de entrada como la de salida de los estudiantes. Además, se integrará con Django, Python y SQL para proporcionar a los profesores herramientas adicionales para evaluar el desempeño de los alumnos.
+El proyecto consiste en desarrollar un sistema  para un curso llamado NeoCode, su mas importante funcionalidad es la gestión de asistencia estudiantil utilizando tecnología Arduino con lector de huellas digitales. Este sistema registrará tanto la hora de entrada como la de salida de los estudiantes. Además, se integrará con Django, Python y SQL para proporcionar a los profesores herramientas adicionales para evaluar el desempeño de los alumnos.
 
 ## Características Principales:
 
 1. **Gestión de Asistencia**: Utilización de Arduino con lector de huellas digitales para registrar la asistencia de los estudiantes de manera eficiente y precisa.
 
-2. **Perfiles de Usuario**: Los usuarios se dividirán en dos tipos: estudiantes y profesores. Cada tipo de usuario tendrá acceso a funciones específicas y a su propio perfil personalizado.
+2. **Perfiles de Usuario**: Los usuarios se dividirán en tres tipos: admin, estudiantes y profesores. Cada tipo de usuario tendrá acceso a funciones específicas y a su propio perfil personalizado.
 
-4. **Observaciones de Desempeño**: Los profesores tendrán la capacidad de agregar observaciones sobre el desempeño de los estudiantes, las cuales estarán disponibles únicamente para otros profesores.
+4. **Observaciones de Desempeño**: Los profesores tendrán la capacidad de agregar observaciones sobre el desempeño de los estudiantes, las cuales estarán disponibles únicamente para otros profesores, dee esta misma manera los estudiantes serán capaces de añadir observaciones a lo profesore.
 
 ## Funcionalidades Adicionales:
 
-1. **Análisis de Datos**: Utilización de Microsoft Power BI para generar informes interactivos sobre tendencias de asistencia.
+1. **Análisis de Datos**: Informes interactivos sobre tendencias de asistencia.
 
 2. **Creación de Informes**: Desarrollo de informes interactivos con gráficos y tablas que muestren la asistencia y el desempeño de los estudiantes. Por ejemplo, gráficos de barras que comparen la asistencia promedio por clase.
 
@@ -30,8 +30,6 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 
 - Arduino con lector de huellas digitales
 - Django, Python y SQL para el desarrollo web
-- Microsoft Power BI para análisis de datos
-- Servicios como Firebase Cloud Messaging (FCM) para notificaciones automáticas
 - Chat GPT API
 
   ## Color Reference
@@ -49,7 +47,3 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 | silver  | ![#ABABAB](https://via.placeholder.com/10/ABABAB?text=+) #ABABAB |
 | School bus yellow  | ![#FEDE00](https://via.placeholder.com/10/FEDE00?text=+) #FEDE00 |
 
-
-## Fonts
-- Inter semibold 
-- Inter regular
