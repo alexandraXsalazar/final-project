@@ -9,6 +9,7 @@ class User(AbstractUser):
         related_name='finalProject_users',
         related_query_name='finalProject_user',
         blank=True,
+        null=True,
         help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
         verbose_name='groups',
     )
@@ -17,6 +18,7 @@ class User(AbstractUser):
         related_name='finalProject_permissions',
         related_query_name='finalProject_permission',
         blank=True,
+        null= True,
         help_text='Specific permissions for this user.',
         verbose_name='user permissions',
     )

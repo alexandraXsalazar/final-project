@@ -51,7 +51,7 @@
 
             </ul>
             <a class="navbar-brand m-auto" href="#">
-                <!--                <img src="static/neocodeLOGO.png" class="brand-img" alt="">-->
+             <img src="static/neologo.png" class="brand-img" alt="">
 
                 <span class="brand-txt">NeoCode</span>
             </a>
@@ -64,7 +64,7 @@
                     <a class="nav-link" href="#contact">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a href="components.html" class="btn btn-primary ml-xl-4">Log in</a>
+                    <a href="{% url 'login' %}" class="btn btn-primary ml-xl-4">Log in</a>
                 </li>
             </ul>
         </div>
@@ -74,7 +74,7 @@
         <div class="overlay text-white text-center">
             <h1 class="display-2 font-weight-bold my-3">NeoCode</h1>
             <h2 class="display-4 mb-5">Master the code, conquer the world</h2>
-            <a class="btn btn-lg btn-primary" href="#gallary">Log in</a>
+            <a class="btn btn-lg btn-primary" href="{% url 'login' %}">Log in</a>
         </div>
     </header>
 
@@ -96,63 +96,7 @@
         </div>
     </div>
 
-    <!--  gallary Section  
-    <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
-        <h2 class="section-title">Techs you will learn</h2>
-    </div>
-    
-    <div class="gallary row">
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="static/c.png" alt="C Programming Language" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-    
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="static/python.png" alt="Python Programming Language" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-    
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="static/flask.png" alt="Flask Framework" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-    
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="static/sql.png" alt="SQL Database" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-    
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="static/html.png" alt="HTML Markup Language" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-    
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="static/js.png" alt="JavaScript Programming Language" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-    
-        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
-            <img src="static/css.png" alt="CSS Styling Language" class="gallary-img">
-            <a href="#" class="gallary-overlay">
-                <i class="gallary-icon ti-plus"></i>
-            </a>
-        </div>
-    </div>
-    
--->
+
 
     <!-- REVIEWS Section  -->
     <div id="testmonial" class="container-fluid wow fadeIn bg-dark text-light has-height-lg middle-items">

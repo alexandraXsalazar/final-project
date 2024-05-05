@@ -17,7 +17,7 @@
   --blue: #79A9F5;
   --indigo: #C45F90;
   --purple: #A16AE8;
-  --pink: #ff214f;
+  --pink: #FEDE00;
   --red: #F85C70;
   --orange: #FF8882;
   --yellow: #FAD02C;
@@ -27,7 +27,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #050A30; /* Cambiado de #343a40 a #050A30 */
-  --primary: #ff214f;
+  --primary: #FEDE00;
   --secondary: #6c757d;
   --success: #A3C14A;
   --info: #47D8E0;
@@ -160,13 +160,13 @@ sup {
 }
 
 a {
-  color: #ff214f;
+  color: #FEDE00 ;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #d4002c;
+  color: #FEDE00 ;
   text-decoration: none;
 }
 
@@ -2779,8 +2779,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #fa0034;
-  border-color: #ed0031;
+  background-color: #FEDE00;
+  border-color: #FEDE00;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2796,8 +2796,8 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #ed0031;
-  border-color: #e0002e;
+  background-color: #FEDE00;
+  border-color: #FEDE00;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -3301,12 +3301,12 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #ff214f;
+  color: #FEDE00 ;
   text-decoration: none;
 }
 
 .btn-link:hover {
-  color: #d4002c;
+  color: #FEDE00 ;
   text-decoration: none;
 }
 
@@ -5384,7 +5384,7 @@ input[type="button"].btn-block {
 
 .page-link:hover {
   z-index: 2;
-  color: #d4002c;
+  color: #FEDE00;
   text-decoration: none;
   background-color: #eaf0fc;
   border-color: #dee2e6;
@@ -10778,7 +10778,7 @@ button.bg-dark:focus {
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #d4002c !important;
+  color: #FEDE00 !important;
 }
 
 .text-secondary {
