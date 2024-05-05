@@ -51,5 +51,6 @@ El proyecto consiste en desarrollar un sistema integral de gestión de asistenci
 
 
 ## Fonts
-- Inter semibold 
-- Inter regular
+- Roboto Slab
+- Quantica
+- Raleway
