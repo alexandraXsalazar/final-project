@@ -47,11 +47,10 @@ El proyecto consiste en desarrollar un sistema  para un curso llamado NeoCode, s
 | silver  | ![#ABABAB](https://via.placeholder.com/10/ABABAB?text=+) #ABABAB |
 | School bus yellow  | ![#FEDE00](https://via.placeholder.com/10/FEDE00?text=+) #FEDE00 |
 
-<<<<<<< HEAD
 
 ## Fonts
 - Roboto Slab
 - Quantica
 - Raleway
 =======
->>>>>>> 10dfaf2a9d38d11b871e484de647f07b0dd141d7
+
