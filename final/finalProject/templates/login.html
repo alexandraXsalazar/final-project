@@ -11,9 +11,11 @@
 </head>
 <body>
 
-<div class="section">
-    <div class="container">
-        <div class="row full-height justify-content-center">
+    <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <div class="section">
+        <div class="container">
+            <div class="row full-height justify-content-center">
             <div class="col-12 text-center align-self-center py-5">
                 <div class="section pb-5 pt-5 pt-sm-2 text-center">
                     <h6 class="mb-0 pb-3"><span>As a student </span><span>As a Staff</span></h6>
@@ -33,7 +35,7 @@
                                             <input type="password" name="student_logpass" class="form-style" placeholder="Your Password" id="student_logpass" autocomplete="off"> <!-- Unique name and ID for student -->
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a href="#" class="btn mt-4">Log in</a>
+                                        <input type="submit" value="loginstu" name="loginstu" class="btn mt-4">
                                         <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
                                     </div>
                                 </div>
@@ -50,7 +52,7 @@
                                             <input type="password" name="staff_logpass" class="form-style" placeholder="Your Password" id="staff_logpass" autocomplete="off"> <!-- Unique name and ID for staff -->
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a href="#" class="btn mt-4">Log in</a>
+                                        <input type="submit" value="loginstaff" name="loginstaff" class="btn mt-4">
                                     </div>
                                 </div>
                             </div>
@@ -61,5 +63,6 @@
         </div>
     </div>
 </div>
+</form>
 </body>
 </html>
