@@ -33,7 +33,7 @@
                                             <input type="password" name="student_logpass" class="form-style" placeholder="Your Password" id="student_logpass" autocomplete="off"> <!-- Unique name and ID for student -->
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a href="#" class="btn mt-4">Log in</a>
+                                        <input type="submit" name="lgStudent" value="studen">
                                         <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
                                     </div>
                                 </div>
@@ -42,15 +42,18 @@
                                 <div class="center-wrap">
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">Staff</h4>
-                                        <div class="form-group">
-                                            <input type="text" name="staff_logname" class="form-style" placeholder="User ID" id="staff_logname" autocomplete="off"> <!-- Unique name and ID for staff -->
-                                            <i class="input-icon uil uil-user"></i>
-                                        </div>	
-                                        <div class="form-group mt-2">
-                                            <input type="password" name="staff_logpass" class="form-style" placeholder="Your Password" id="staff_logpass" autocomplete="off"> <!-- Unique name and ID for staff -->
-                                            <i class="input-icon uil uil-lock-alt"></i>
-                                        </div>
-                                        <a href="#" class="btn mt-4">Log in</a>
+                                        <form action="{% url 'loginStaff'%}" method="post">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <input type="text" name="logname" class="form-style" placeholder="User ID" id="staff_logname" autocomplete="off"> <!-- Unique name and ID for staff -->
+                                                <i class="input-icon uil uil-user"></i>
+                                            </div>	
+                                            <div class="form-group mt-2">
+                                                <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="staff_logpass" autocomplete="off"> <!-- Unique name and ID for staff -->
+                                                <i class="input-icon uil uil-lock-alt"></i>
+                                            </div>
+                                            <input type="submit" name="lgStaff" value="staff">
+                                        </form>
                                     </div>
                                 </div>
                             </div>

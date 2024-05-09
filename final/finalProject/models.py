@@ -40,13 +40,13 @@ class Student(models.Model):
     class_group = models.CharField(max_length=2)
 
     def __str__(self):
-        return self.name
+        return str(self.user)
 
 class Staff(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="staff")
 
     def __str__(self):
-        return self.name
+        return str(self.user)
 
 class Attendance(models.Model):
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE, related_name="attendances")
