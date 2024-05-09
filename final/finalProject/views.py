@@ -15,26 +15,34 @@ def loginStaff(request):
     if request.method == 'POST':
         # Obtiene los datos del formulario de inicio de sesión
         rolestaff = request.POST.get('lgStaff')
+        rolest = request.POST.get('lgStudent')
         usernamestu = request.POST.get('logname')
         passwordstu = request.POST.get('logpass')
-
-
-
         
         # Autentica al usuario correspondiente según su rol
         if rolestaff == "staff": 
             user = authenticate(username=usernamestu, password=passwordstu) # -> esto no esta devolviendo algo
+            print(f"hola {user}")
+        elif rolest == "student":
+            user = authenticate(username=usernamestu, password=passwordstu)  # -> esto no esta devolviendo algo
+            print(f"adios {user}")
+
         else:
             return render(request, 'login.html', {'error_message': 'Invalid role'})
         
         print(user)
         if rolestaff == "staff":
             try:
-                usernamestaff = Student.objects.get(user_id=3) 
+                usernamestaff = Staff.objects.get(user_id=3) 
                 return render(request, "index.html")
             except Staff.DoesNotExist:
-                print("staffNOEXISTE")
                 return render(request, 'login.html', {'error_message': 'Invalid staff credentials'})
+        elif rolest == "student":
+            try:
+                usernamestudent = Student.objects.get(user_id=3)
+                return render(request, "index.html")
+            except Student.DoesNotExist:
+                return render(request, 'login.html', {'error_message': 'Invalid student credentials'})
             
        
         return render(request, 'login.html', {'error_message': 'Invalid username or password'})
