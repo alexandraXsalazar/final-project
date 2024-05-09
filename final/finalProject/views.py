@@ -42,7 +42,7 @@ def loginStaff(request):
                 usernamestudent = Student.objects.get(user_id=3)
                 return render(request, "index.html")
             except Student.DoesNotExist:
-                return render(request, 'login.html', {'error_message': 'Invalid student credentials'})
+                return render(request, 'login.html', {'error_message ': 'Invalid student credentials'})
             
        
         return render(request, 'login.html', {'error_message': 'Invalid username or password'})
