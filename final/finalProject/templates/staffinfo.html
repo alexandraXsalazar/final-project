@@ -3,8 +3,8 @@
 
 {% block title %}Staff Info{% endblock %}
 {% block head %}
-<link rel="stylesheet" href="static/staffinfo.css">
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'staffinfo.css' %}">
 {% endblock %}
 {% block body %}
 <div class="container">
