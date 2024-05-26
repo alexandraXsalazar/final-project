@@ -44,6 +44,8 @@ class Student(models.Model):
 
 class Staff(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="staff")
+    image_url = models.CharField(max_length=1000, default='logo.png')  
+    description = models.CharField(max_length=1000, default='Nada.') 
 
     def __str__(self):
         return str(self.user)
@@ -66,3 +68,11 @@ class StuFeedback(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="received_stu_feedbacks")
     observation = models.CharField(max_length=244)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+
+class PlayerScore(models.Model):
+    player = models.ForeignKey('User', on_delete=models.CASCADE)
+    score = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.player.username}: {self.score}"

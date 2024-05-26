@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoCode</title>
+    <title>{% block title %}NeoCode{% endblock %}</title>
     <link rel="icon" href="static/neologo.png" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="static/stylestaff.css">
@@ -30,7 +30,7 @@
         <div class="user">
             <img class="user-img" src="static/neologo.png" alt="neocode">
             <p class="bold">User name</p>
-            <p>Staff or Student</p>
+            <p>Staff </p>
         </div>
         <ul>
             <li>
@@ -45,11 +45,11 @@
             <li>
                 <a href="#" style="display: flex; align-items: center;">
                     <i class="bx bxs-info-circle"></i>
-                    <span class="nav-item">Students info</span>
+                    <span class="nav-item">Student info</span>
                 </a>
-                <span class="tooltip">Students info</span>
+                <span class="tooltip">Student info</span>
             </li>
-        
+t
             <li>
                 <a href="#" style="display: flex; align-items: center;">
                     <i class="bx bxs-party"></i>
@@ -75,12 +75,14 @@
             </li>
         
             <li>
-                <a href="#" style="display: flex; align-items: center;">
+                <a href="{% url 'logout' %}" style="display: flex; align-items: center;">
                     <i class="bx bxs-log-out"></i>
                     <span class="nav-item">log out</span>
                 </a>
                 <span class="tooltip">log out</span>
             </li>
+            
+            
         </ul>
         
     </div>

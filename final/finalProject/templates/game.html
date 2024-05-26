@@ -1,0 +1,50 @@
+<!-- staff_detail.html -->
+{% extends 'layoutstaff.html' %}
+
+{% block title %}Staff Info{% endblock %}
+{% block head %}
+<style>
+    #game {
+        width: 400px;
+        height: 400px;
+        border: 1px solid black;
+        position: relative;
+    }
+    
+    #duck {
+        width: 50px;
+        height: 50px;
+        background-color: yellow;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .bug {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        position: absolute;
+    }
+    
+    #score {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+</style>
+
+{% endblock %}
+{% block body %}
+<div id="game">
+    <div id="duck"></div>
+    <div id="bugs"></div>
+    <div id="score">Score: 0</div>
+</div>
+
+<script src="static/game.js"></script>
+</body>
+</html>
+{% endblock %}

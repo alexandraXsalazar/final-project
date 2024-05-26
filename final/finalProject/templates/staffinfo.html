@@ -1,0 +1,30 @@
+<!-- staff_detail.html -->
+{% extends 'layoutstaff.html' %}
+
+{% block title %}Staff Info{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="static/staffinfo.css">
+
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card">
+        <div class="content">
+            <div class="img">
+                <img src="https://unsplash.it/200/200" alt="Profile Picture">
+            </div>
+            <div class="cardContent">
+                <h3>Luis Molina<br><span>Neocode Staff</span></h3>
+            </div>
+        </div>
+        <ul class="sci">
+            <li style="--i:1">
+                <h5>Lorem Ipsum</h5>
+            </li>
+            <li style="--i:2">
+                <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
