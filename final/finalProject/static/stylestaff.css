@@ -1,183 +1,166 @@
-    
-    
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    .user-img{
-        width: 50px;
-        border: 1 px solid #eee;
-        border-radius: 100%;
-    }
+/* Reset CSS */
 
-    .sidebar{
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 80px;
-        background-color: #050A30;
-        padding: 0.4rem 0.8rem;
-        transition: all 0.5s ease;
-        border-radius: 8px;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .sidebar.active  ~ .main-content{
-        left: 250px;
-        width: calc(100% - 250px);
-    }
+/* Sidebar Navigation Styles */
 
-    .sidebar.active{
-        width: 250px;
-    }
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: #050A30;
+    padding: 0.4rem 0.8rem;
+    transition: all 0.5s ease;
+    border-radius: 8px;
+}
 
-    .sidebar.active > .user > p{
-        display: block;
-    }
+.sidebar.active  ~ .main-content {
+    left: 250px;
+    width: calc(100% - 250px);
+}
 
-    .sidebar #btn{
-        position: absolute;
-        color: #eee;
-        top: .4rem;
-        left: 50%;
-        font-size: 1.2rem;
-        line-height: 50px;
-        transform: translateX(-50%);
-        cursor: pointer;
-    }
+.sidebar.active {
+    width: 250px;
+}
 
-    .sidebar.active #btn{
-        left: 90%;
-    }
+.sidebar.active > .user > p {
+    display: block;
+}
 
-    .sidebar .top .logo{
-        color: aliceblue;
-        display: flex;
-        height: 50px;
-        width: 100%;
-        align-items: center;
-        pointer-events: none;
-        opacity: 0;
-    }
+.sidebar #btn {
+    position: absolute;
+    color: #eee;
+    top: .4rem;
+    left: 50%;
+    font-size: 1.2rem;
+    line-height: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
 
-    .sidebar.active .top .logo{
+.sidebar.active #btn {
+    left: 90%;
+}
+
+.sidebar .top .logo {
+    color: aliceblue;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.sidebar.active .top .logo {
     opacity: 1;
-    }
+}
 
-    .top .logo i{
-        font-size: 2rem;
-        margin-right: 5px;
-    }
+.top .logo i {
+    font-size: 2rem;
+    margin-right: 5px;
+}
 
-.user{
-
+.user {
     align-items: center;
     margin: 1rem 0;
 }
 
-    .user p{
-        color: aliceblue;
-        opacity: 1;
-        margin-left: 1rem;
-    }
+.user p {
+    color: aliceblue;
+    opacity: 1;
+    margin-left: 1rem;
+}
 
-    .bold
-    {
-        font-weight: 600;
-    }
+.bold {
+    font-weight: 600;
+}
 
-    .sidebar p {
-        opacity: 0;
-    }
+.sidebar p {
+    opacity: 0;
+}
 
-    .sidebar.active p {
-        opacity: 1;
-    }
+.sidebar.active p {
+    opacity: 1;
+}
 
-    .sidebar ul li{
-        position: relative;
-        list-style-type: none;
-        height: 50px;
-        width: 90%;
-        margin: 0.8rem auto;
-        /* line-height: 50px; */
-    } 
+.sidebar ul li {
+    position: relative;
+    list-style-type: none;
+    height: 50px;
+    width: 90%;
+    margin: 0.8rem auto;
+}
 
-    .sidebar ul li a{
-        color: aliceblue;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        border-radius: 0.8rem;
-    }
+.sidebar ul li a {
+    color: aliceblue;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border-radius: 0.8rem;
+}
 
-    .sidebar ul li a:hover{
-        background-color: aliceblue;
-        color: #050A30;
+.sidebar ul li a:hover {
+    background-color: aliceblue;
+    color: #050A30;
+}
 
-    }
+.sidebar ul li a i {
+    min-width: 50px;
+    text-align: center;
+    border-radius: 12px;
+    line-height: 50px;
+}
 
-    .sidebar ul li a i{
+.sidebar .nav-item {
+    opacity: 0;
+}
 
-        min-width: 50px;
-        text-align: center;
-        /*height: 5px;*/
-        border-radius: 12px;
-        line-height: 50px;
-    }
+.sidebar.active .nav-item {
+    opacity: 1;
+}
 
-    .sidebar .nav-item{
-        opacity: 0;
-    }
+.sidebar ul li .tooltip {
+    position: absolute;
+    left: 125px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.6rem;
+    padding: 0.4rem 1.2 rem;
+    line-height: 1.8rem;
+    z-index: 20;
+    opacity: 0;
+}
 
-    .sidebar.active .nav-item{
-        opacity: 1;
-    }
+.sidebar ul li:hover .tooltip {
+    opacity: 1;
+}
 
-    .sidebar ul li .tooltip{
-        position: absolute;
-        left: 125px;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
-        border-radius: 0.6rem;
-        padding: 0.4rem 1.2 rem;
-        line-height: 1.8rem;
-        z-index: 20;
-        opacity: 0;
-    }
-
-    .sidebar ul li:hover .tooltip{
-        opacity: 1;
-    }
-
-    .sidebar.active ul li .tooltip{
-        display: none;
-    }
-
-    .main-content{
-        position: relative;
-        background-color: aliceblue;
-        min-height: 100vh;
-        top: 0;
-        left: 80px;
-        transition: all 0.5s ease;
-        width: calc(100% - 80px);
-        padding: 1rem;
-    }
-
-    .container{
-        display: flex;
-        justify-content: space-between;
-    }
-
-.sidebar > .user > p
-{
+.sidebar.active ul li .tooltip {
     display: none;
 }
 
+/* Main Content Styles */
+
+.main-content {
+    position: relative;
+    background-color: aliceblue;
+    min-height: 100vh;
+    top: 0;
+    left: 80px;
+    transition: all 0.5s ease;
+    width: calc(100% - 80px);
+    padding: 1rem;
+}
+
+/* Duck-Catching Bugs Game Styles */
 
 #game {
     width: 400px;

@@ -44,8 +44,8 @@ class Student(models.Model):
 
 class Staff(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="staff")
-    image_url = models.CharField(max_length=1000, default='logo.png')  
-    description = models.CharField(max_length=1000, default='Nada.') 
+    image = models.CharField(max_length=1000, default='static/neologo.png')  
+    description = models.CharField(max_length=1000, default='Nada.')
 
     def __str__(self):
         return str(self.user)
