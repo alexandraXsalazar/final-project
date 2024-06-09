@@ -38,7 +38,7 @@ def chatbot_response(request):
 
 
 def index(request):
-    return render(request, "duckbot.html")
+    return render(request, "duckBot.html")
 
 @csrf_exempt
 def loginStaff(request):
