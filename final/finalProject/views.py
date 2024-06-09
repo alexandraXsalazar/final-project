@@ -13,65 +13,32 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import check_password, make_password
 import os
+from .chatbot.chatbot import respuesta 
 
-
-lemmatizer = WordNetLemmatizer()
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-with open(os.path.join(BASE_DIR, 'intents.json')) as file:
-    intents = json.load(file)
-
-with open(os.path.join(BASE_DIR, 'words.pkl'), 'rb') as file:
-    words = pickle.load(file)
-
-with open(os.path.join(BASE_DIR, 'classes.pkl'), 'rb') as file:
-    classes = pickle.load(file)
-
-model = load_model(os.path.join(BASE_DIR, 'chatbot_model.h5'))
-
-def clean_up_sentence(sentence):
-    sentence_words = nltk.word_tokenize(sentence)
-    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
-    return sentence_words
-
-
-def bag_of_words(sentence):
-    sentence_words = clean_up_sentence(sentence)
-    bag = [0] * len(words)
-    for w in sentence_words:
-        for i, word in enumerate(words):
-            if word == w:
-                bag[i] = 1
-    return np.array(bag)
-
-
-def predict_class(sentence):
-    bow = bag_of_words(sentence)
-    res = model.predict(np.array([bow]))[0]
-    max_index = np.argmax(res)
-    category = classes[max_index]
-    return category
-
-
-def get_response(tag, intents_json):
-    list_of_intents = intents_json['intents']
-    for i in list_of_intents:
-        if i['tag'] == tag:
-            return random.choice(i['responses'])
 
 
 @csrf_exempt
-def duckBot(request):
+def chatbot_response(request):
     if request.method == 'POST':
-        message = json.loads(request.body)['message']
-        ints = predict_class(message)
-        res = get_response(ints, intents)
-        return JsonResponse({'response': res})
-    return render(request, 'duckBot.html')
+        data = json.loads(request.body)
+        message = data.get('message')
+        response = respuesta(message)
+        return JsonResponse({'response': response})
+    return JsonResponse({'error': 'Invalid request method.'}, status=400)
+
+
+# @csrf_exempt
+# def duckBot(request):
+#     if request.method == 'POST':
+#         message = json.loads(request.body)['message']
+#         ints = predict_class(message)
+#         res = get_response(ints, intents)
+#         return JsonResponse({'response': res})
+#     return render(request, 'duckBot.html')
 
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "duckbot.html")
 
 @csrf_exempt
 def loginStaff(request):
