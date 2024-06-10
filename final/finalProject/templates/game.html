@@ -165,9 +165,9 @@
             const rect2 = div2.getBoundingClientRect();
             
             return !(rect1.right < rect2.left || 
-                     rect1.left > rect2.right || 
-                     rect1.bottom < rect2.top || 
-                     rect1.top > rect2.bottom);
+                    rect1.left > rect2.right || 
+                    rect1.bottom < rect2.top || 
+                    rect1.top > rect2.bottom);
         }
         
         function resetFallingObject() {
@@ -192,7 +192,7 @@
             gameOverDisplay.style.display = 'none';
             fallingObject.style.display = 'block';
             startButton.style.display = 'none';
-            player.style.left = (gameAreaWidth / 2 - player.clientWidth / 2) + 'px'; // Centrar el jugador al iniciar el juego
+            player.style.left = (gameAreaWidth / 2 - player.clientWidth / 2) + 'px'; 
             startFalling();
         }
 
