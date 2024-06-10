@@ -1,0 +1,140 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": ["Hi", "Hello", "How are you?", "Hey"],
+            "responses": ["Hello!", "Hi there!", "Greetings!", "How can I help you today?", "Hello! How are you doing?", "Hi! What's up?", "Hey there!"]
+        },
+        {
+            "tag": "neocode",
+            "patterns": ["neocode", "NeoCode", "what is neocode", "tell me about NeoCode", "what is NeoCode"],
+            "responses": [
+                "NeoCode is a course that introduces the fundamentals of computer science.",
+                "The NeoCode course teaches the basics of computer science.",
+                "NeoCode is a popular course that introduces programming and computational thinking.",
+                "NeoCode is an excellent way to start in the world of computer science and programming.",
+                "NeoCode covers topics such as programming, data structures, algorithms, and more.",
+                "NeoCode is a program created by Fundación dos in collaboration with the National University of Engineering (UNI).",
+                "Inspired by the 'NeoCode' course at the University of Cambridge, our goal is to provide an introduction to the intellectual enterprises of computer science and the art of programming.",
+                "At NeoCode, we believe that mastering the code is the key to conquering the world. Our tagline is 'Master the Code, Conquer the World'.",
+                "Join us on this exciting journey of discovery and learning in the world of computer science."
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["bye", "goodbye", "see you later", "farewell"],
+            "responses": ["Goodbye!", "See you later!", "Farewell!", "Take care!", "See you soon!"]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["thanks", "thank you", "much appreciated"],
+            "responses": ["You're welcome!", "No problem!", "My pleasure!", "Happy to help!", "No worries!"]
+        },
+        {
+            "tag": "name",
+            "patterns": ["what is your name?", "who are you?", "what's your name?", "who are you?"],
+            "responses": ["I am a chatbot.", "My name is Duckbot.", "I am a virtual assistant.", "My name is Duckbot."]
+        },
+        {
+            "tag": "hours",
+            "patterns": ["What are your hours?", "When are you open?", "What are your operating hours?", "When can I reach you?"],
+            "responses": ["I'm available 24/7.", "You can talk to me anytime!", "I am available all day, every day.", "You can reach me at any time!"]
+        },
+        {
+            "tag": "location",
+            "patterns": ["Where are you located?", "Where can I find you?", "Where are you based?", "Where are you?"],
+            "responses": ["I'm a virtual assistant, so I exist everywhere!", "You can find me on the internet.", "I am a virtual assistant and I'm everywhere.", "You can find me online."]
+        },
+        {
+            "tag": "help",
+            "patterns": ["I need help", "Can you help me?", "Help me", "I need assistance"],
+            "responses": ["Of course! What do you need help with?", "I'm here to help. What do you need?", "Sure! What do you need assistance with?", "I'm here to assist. How can I help?"]
+        },
+        {
+            "tag": "joke",
+            "patterns": ["Tell me a joke", "Do you know any jokes?", "Make me laugh", "Tell a joke"],
+            "responses": [
+                "Why don't scientists trust atoms? Because they make up everything!",
+                "Why did the scarecrow win an award? Because he was outstanding in his field!",
+                "Why don't programmers like nature? It has too many bugs.",
+                "Why do cows have hooves instead of feet? Because they lactose.",
+                "What do you get when you cross a snowman and a vampire? Frostbite."
+            ]
+        },
+        {
+            "tag": "about_neocode",
+            "patterns": ["tell me about NeoCode", "what is NeoCode", "information about NeoCode", "info on NeoCode"],
+            "responses": [
+                "Welcome to NeoCode, a program created by Fundación dos in collaboration with the National University of Engineering (UNI). Inspired by the 'NeoCode' course at the University of Cambridge, our goal is to provide an introduction to the intellectual enterprises of computer science and the art of programming.",
+                "At NeoCode, we believe that mastering the code is the key to conquering the world. We strive to provide a dynamic and enriching educational environment where students can explore the fundamentals of computer science and develop essential programming skills.",
+                "With our tagline 'Master the Code, Conquer the World', we aim to empower individuals to harness the power of technology and create a better future.",
+                "Join us on the exciting journey of discovery and learning in the world of computer science. Welcome to NeoCode, where mastering the code is the first step to conquering the world!"
+            ]
+        },
+        {
+            "tag": "faq",
+            "patterns": ["FAQ", "most asked questions", "common questions", "frequently asked questions"],
+            "responses": [
+                "What is NeoCode? NeoCode is a program by Fundación dos in collaboration with the National University of Engineering (UNI), based on the NeoCode course from Cambridge University, titled 'Introduction to the intellectual enterprises of computer science and the art of programming.'",
+                "How do I access the course? To enroll in this course, you have to visit our installations or contact us for more info. The course includes virtual sessions that you can attend from home or any location with internet access, as well as in-person sessions with laboratory practices, tutors, and plenty of fun. The in-person sessions take place at the National University of Engineering in Managua, with flexible scheduling, or remotely via virtual attendance.",
+                "What do I need? The course is free of charge for you; however, we require regular attendance at lectures, virtual sessions, and other in-person activities. To successfully complete the course, approximately 14 hours per week are needed, including time for in-person sessions, virtual attendance, study hours, and work at home. It is preferable to have a computer with internet access and to submit assignments or PSets promptly. With dedication and effort, we are confident you can succeed."
+            ]
+        },
+        {
+            "tag": "course_duration",
+            "patterns": ["How long is the course?", "What is the duration of the course?", "Course length", "How many weeks is the course?"],
+            "responses": [
+                "The NeoCode course runs for 12 weeks, covering a comprehensive range of topics in computer science and programming."
+            ]
+        },
+        {
+            "tag": "course_cost",
+            "patterns": ["Is the course free?", "What is the cost of the course?", "How much does the course cost?", "Course fee"],
+            "responses": [
+                "The NeoCode course is free of charge for all participants."
+            ]
+        },
+        {
+            "tag": "course_requirements",
+            "patterns": ["What are the requirements for the course?", "Do I need any prior knowledge?", "Course prerequisites", "Do I need experience to join the course?"],
+            "responses": [
+                "No prior knowledge is required to join the NeoCode course. It is designed for beginners and those new to computer science and programming."
+            ]
+        },
+        {
+            "tag": "course_schedule",
+            "patterns": ["What is the course schedule?", "When are the classes?", "Course timetable", "Class times"],
+            "responses": [
+                "The NeoCode course includes both virtual and in-person sessions. The schedule is flexible, with multiple options available for in-person sessions at the National University of Engineering in Managua."
+            ]
+        },
+        {
+            "tag": "contact_info",
+            "patterns": ["How can I contact you?", "What is your contact information?", "How do I get in touch?", "Contact details"],
+            "responses": [
+                "You can contact us through our website or visit our installations at the National University of Engineering in Managua. You can also reach us via email at contact@neocode.com."
+            ]
+        },
+        {
+            "tag": "human_response",
+            "patterns": [
+                "What will I learn in the course?", 
+                "What topics are covered?", 
+                "What skills will I gain?", 
+                "What languages will I learn?", 
+                "What kind of projects will I work on?",
+                "What benefits does the course offer?",
+                "How can this course help me?",
+                "Why should I join NeoCode?"
+            ],
+            "responses": [
+                "You will gain a broad and robust understanding of computer science and programming.",
+                "You will learn how to think algorithmically and solve programming problems efficiently.",
+                "You will cover concepts like abstraction, algorithms, data structures, encapsulation, resource management, security, software engineering, and web development.",
+                "You will become familiar with a number of languages, including C, Python, SQL, and JavaScript plus CSS and HTML.",
+                "You will engage with a vibrant community of like-minded learners from all levels of experience.",
+                "You will develop and present a final programming project to your peers."
+            ]
+        }
+    ]
+}

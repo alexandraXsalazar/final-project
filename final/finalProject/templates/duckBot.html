@@ -1,55 +1,146 @@
-<!-- chatbot/templates/chatbot/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+    <title>Virtual Assistant</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        *,
+        *:before,
+        *:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            font-size: 62.5%;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-        }
-        #chat-container {
-            width: 50%;
-            margin: 0 auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        #messages {
-            height: 300px;
-            overflow-y: scroll;
-            border: 1px solid #ddd;
-            padding: 5px;
-            margin-bottom: 10px;
-        }
-        .message {
-            margin: 5px 0;
-        }
-        .user {
-            text-align: right;
-        }
-        .bot {
-            text-align: left;
-        }
-        #input-container {
+            background-color: #9ca6b0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
             display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+        .container {
+            width: 90%;
+            max-width: 600px; /* Ajuste del ancho */
+        }
+
+        nav {
+            background-color: #050A30;
+            color: #fff;
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 6px 6px 0 0;
+        }
+
+        nav>h1 {
+            font-size: 2.5rem;
+        }
+
+        nav>p {
+            margin-top: .5rem;
+            font-size: 1.4rem;
+            color: #e2e4e6;
+        }
+
+        .chat {
+            font-size: 1.6rem;
+            background-color: #fff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-height: 400px; /* Ajuste de la altura del chat */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-bottom: none;
+        }
+
+        .chat.empty {
+            min-height: 200px; /* Ajuste del alto mínimo cuando está vacío */
+        }
+
+        .chat::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat::-webkit-scrollbar-thumb {
+            background-color: #050A30;
+            border-radius: 4px;
+        }
+
+        .message {
+            padding: 1rem 1.5rem;
+            max-width: 70%;
+            border-radius: 10px;
+            word-wrap: break-word;
+        }
+
+        .user {
+            align-self: flex-end;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .bot {
+            align-self: flex-start;
+            background-color: #eff3f6;
+        }
+
+        .message-box {
+            padding: 1.5rem 2rem;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .message-input {
+            width: 100%;
+        }
+
         #message-input {
-            flex: 1;
-            padding: 10px;
+            border: none;
+            padding: 1rem;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            font-size: 1.6rem;
+            outline: none;
         }
-        #send-button {
-            padding: 10px 20px;
+
+        .plane {
+            font-size: 2rem;
+            color: #050A30;
+            cursor: pointer;
+            
         }
     </style>
 </head>
 <body>
-    <div id="chat-container">
-        <div id="messages"></div>
-        <div id="input-container">
-            <input type="text" id="message-input" placeholder="Type your message here">
-            <button id="send-button">Send</button>
+    <div class="container">
+        <nav>
+            <h1>DuckBot</h1>
+            <p>Quack! Our DuckBot is ready to assist you, making your online experience seamless and enjoyable.</p>
+        </nav>
+        <div id="messages" class="chat empty"></div>
+        <div class="message-box">
+            <div class="message-input">
+                <input id="message-input" type="text" placeholder="Quack! Ask me something...">
+            </div>
+            <div class="send-btn">
+                <i id="send-button" class="fa-solid fa-paper-plane plane">send</i>
+            </div>
         </div>
     </div>
 
@@ -82,6 +173,11 @@
             messageDiv.textContent = message;
             messagesDiv.appendChild(messageDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            // Remover la clase "empty" si se añade un mensaje
+            if (messagesDiv.classList.contains('empty')) {
+                messagesDiv.classList.remove('empty');
+            }
         }
 
         function getCookie(name) {

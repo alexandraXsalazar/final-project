@@ -8,7 +8,7 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("staffinfo", views.staffinfo, name="staffinfo"),
     path("game_view", views.game_view, name="game_view"),
-    #path("duckBot", views.duckBot, name="duckBot"),
-    path('chat/', views.chatbot_response, name='chatbot_response'),
+    path("duckBot", views.duckBot, name="duckBot"),
+    #path('chat/', views.chatbot_response, name='chatbot_response'),
 
 ]

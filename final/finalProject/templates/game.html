@@ -1,52 +1,202 @@
-<!-- staff_detail.html -->
-{% extends 'layoutstaff.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego con JavaScript</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #9ca6b0;
+            font-family:"Roboto Slab" sans-serif;
+        }
+        
+        #game-area {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background-color: #ffffff;
+            border: 2px solid #ccc;
+            border-radius: 3%;
+            overflow: hidden;
+            font-family:"Roboto Slab" sans-serif;
+        }
+        
+        #player {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('static/pato.png');
+            background-size: cover;
+            bottom: 10px;
+            left: 175px;
+        }
+        
+        #falling-object {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-image: url('static/bug.jpg');
+            background-size: cover;
+            top: 0;
+            left: 0;
+        }
+        
+        #score {
+            background-color: #050A30;
+            color: aliceblue;
+            padding:5px 5px ;
+            border-radius: 8%;
+            margin-top: 20px;
+            font-size: 24px;
+            font-family:"Roboto Slab" sans-serif;
+        }
 
-{% block title %}Staff Info{% endblock %}
-{% block head %}
-<style>
-    #game {
-        width: 400px;
-        height: 400px;
-        display: flex;
-        align-items:center ;
-        justify-content: center;
-        border: ;
-    }
-    
-    #duck {
-        width: 50px;
-        height: 50px;
-        background-color: yellow;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .bug {
-        width: 20px;
-        height: 20px;
-        background-color: red;
-        position: absolute;
-    }
-    
-    #score {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-    
-</style>
+        #lives {
+            background-color: #050A30;
+            color: aliceblue;
+            padding:5px 5px ;
+            border-radius: 8%;
+            margin-top: 20px;
+            font-size: 24px;
+            font-family:"Roboto Slab" sans-serif;
+        }
 
-{% endblock %}
-{% block body %}
-<div id="game">
-    <div id="duck"></div>
-    <div id="bugs"></div>
-    <div id="score">Score: 0</div>
-</div>
+        #game-over {
+            display: none;
+            font-size: 32px;
+            color: rgb(104, 2, 2);
+            margin-top: 20px;
+            font-family:"Roboto Slab" sans-serif;
+        }
 
-<script src="static/game.js"></script>
+        #start-button {
+            font-size: 24px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            color: aliceblue;
+            background-color:  #050A30;
+            border: #050A30;
+            font-family:"Roboto Slab" sans-serif;
+            border-radius: 4%;
+            
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center; row-gap: 30px; column-gap: 100px; margin-bottom: 10px;">
+    <div id="score">Points: 0</div>
+    <div id="lives">Lives: 3</div>
+    </div>
+<div id="game-over">Game over!</div>
+    <div id="game-area">
+        <div id="player"></div>
+        <div id="falling-object"></div>
+    </div>
+    <button id="start-button">Start Game</button>
+    <script>
+        const player = document.getElementById('player');
+        const fallingObject = document.getElementById('falling-object');
+        const scoreDisplay = document.getElementById('score');
+        const livesDisplay = document.getElementById('lives');
+        const gameOverDisplay = document.getElementById('game-over');
+        const startButton = document.getElementById('start-button');
+        let score = 0;
+        let missedBugs = 0;
+        const maxMissedBugs = 3;
+        
+        const gameArea = document.getElementById('game-area');
+        const gameAreaWidth = gameArea.clientWidth;
+        const gameAreaHeight = gameArea.clientHeight;
+        const playerSpeed = 10;
+        let fallingSpeed = 1;
+        let gameRunning = false;
+        
+        document.addEventListener('keydown', (event) => {
+            if (gameRunning) {
+                let playerLeft = parseInt(window.getComputedStyle(player).getPropertyValue('left'));
+                if (event.key === 'ArrowLeft' && playerLeft > 0) {
+                    player.style.left = playerLeft - playerSpeed + 'px';
+                } else if (event.key === 'ArrowRight' && playerLeft < gameAreaWidth - player.clientWidth) {
+                    player.style.left = playerLeft + playerSpeed + 'px';
+                }
+            }
+        });
+        
+        function startFalling() {
+            if (gameRunning) {
+                fallingObject.style.top = '0px';
+                fallingObject.style.left = Math.floor(Math.random() * (gameAreaWidth - fallingObject.clientWidth)) + 'px';
+                fall();
+            }
+        }
+        
+        function fall() {
+            if (gameRunning) {
+                let fallingObjectTop = parseInt(window.getComputedStyle(fallingObject).getPropertyValue('top'));
+                if (fallingObjectTop < gameAreaHeight) {
+                    fallingObject.style.top = fallingObjectTop + fallingSpeed + 'px';
+                    requestAnimationFrame(fall);
+                    if (checkCollision(player, fallingObject)) {
+                        score += 1;
+                        scoreDisplay.innerText = 'Puntos: ' + score;
+                        resetFallingObject();
+                    }
+                } else {
+                    missedBugs += 1;
+                    livesDisplay.innerText = 'Vidas: ' + (maxMissedBugs - missedBugs);
+                    if (missedBugs >= maxMissedBugs) {
+                        gameOver();
+                    } else {
+                        resetFallingObject();
+                    }
+                }
+            }
+        }
+        
+        function checkCollision(div1, div2) {
+            const rect1 = div1.getBoundingClientRect();
+            const rect2 = div2.getBoundingClientRect();
+            
+            return !(rect1.right < rect2.left || 
+                     rect1.left > rect2.right || 
+                     rect1.bottom < rect2.top || 
+                     rect1.top > rect2.bottom);
+        }
+        
+        function resetFallingObject() {
+            fallingObject.style.top = '0px';
+            startFalling();
+        }
+        
+        function gameOver() {
+            gameRunning = false;
+            gameOverDisplay.style.display = 'block';
+            fallingObject.style.display = 'none';
+            startButton.innerText = 'Play Again';
+            startButton.style.display = 'block';
+        }
+        
+        function startGame() {
+            gameRunning = true;
+            score = 0;
+            missedBugs = 0;
+            scoreDisplay.innerText = 'Puntos: ' + score;
+            livesDisplay.innerText = 'Vidas: ' + (maxMissedBugs - missedBugs);
+            gameOverDisplay.style.display = 'none';
+            fallingObject.style.display = 'block';
+            startButton.style.display = 'none';
+            player.style.left = (gameAreaWidth / 2 - player.clientWidth / 2) + 'px'; // Centrar el jugador al iniciar el juego
+            startFalling();
+        }
+
+        startButton.addEventListener('click', startGame);
+    </script>
 </body>
 </html>
-{% endblock %}

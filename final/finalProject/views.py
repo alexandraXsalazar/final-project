@@ -27,18 +27,13 @@ def chatbot_response(request):
     return JsonResponse({'error': 'Invalid request method.'}, status=400)
 
 
-# @csrf_exempt
-# def duckBot(request):
-#     if request.method == 'POST':
-#         message = json.loads(request.body)['message']
-#         ints = predict_class(message)
-#         res = get_response(ints, intents)
-#         return JsonResponse({'response': res})
-#     return render(request, 'duckBot.html')
+
+def duckBot(request):
+    return render(request, 'duckBot.html')
 
 
 def index(request):
-    return render(request, "duckBot.html")
+    return render(request, "index.html")
 
 @csrf_exempt
 def loginStaff(request):
