@@ -9,101 +9,114 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="static/stylestaff.css">
     <link rel="stylesheet" href="../static/staffinfo.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+        Toast.fire({
+            icon: "success",
+            title: "Signed in successfully"
+        });
+    });
+</script>
 
-    <style>
-        .bx {
-            vertical-align: middle; /* Alinea verticalmente el icono */
-        }
-    </style>
+<style>
+    .bx {
+        vertical-align: middle; /* Align the icon vertically */
+    }
+</style>
 
-
-    <div class="sidebar">
-        <div class="top">
-            <div class="logo">
-                <img class="user-img" style="width: 50px; height: 50px;" src="static/neologo.png" alt="neocode">
-                <span>NeoCode</span>
-            </div>
-            <i class="bx bx-menu" id="btn"></i>
-        </div>
-
-        <div class="user">
+<div class="sidebar">
+    <div class="top">
+        <div class="logo">
             <img class="user-img" style="width: 50px; height: 50px;" src="static/neologo.png" alt="neocode">
-            <p class="bold">User name</p>
-            <p>Staff </p>
+            <span>NeoCode</span>
         </div>
-        <ul>
-            <li>
-                <a href="#" style="display: flex; align-items: center;">
-                    <i class="bx bxs-check-circle"></i>
-                    <span class="nav-item">Take attendance</span>
-                </a>
-                <span class="tooltip">Take attendance</span>
-            </li>
-            
-            
-            <li>
-                <a href="#" style="display: flex; align-items: center;">
-                    <i class="bx bxs-info-circle"></i>
-                    <span class="nav-item">Student info</span>
-                </a>
-                <span class="tooltip">Student info</span>
-            </li>
-
-            <li>
-                <a href="#" style="display: flex; align-items: center;">
-                    <i class="bx bxs-party"></i>
-                    <span class="nav-item">Network</span>
-                </a>
-                <span class="tooltip">Network</span>
-            </li>
-        
-            <li>
-                <a href="{% url 'duckBot' %}" style="display: flex; align-items: center;">
-                    <i class="bx bxs-help-circle"></i>
-                    <span class="nav-item">Duck bot</span>
-                </a>
-                <span class="tooltip">Duck bot</span>
-            </li>
-        
-            <li>
-                <a href="{% url 'game_view' %}" style="display: flex; align-items: center;">
-                    <i class="bx bxs-invader"></i>
-                    <span class="nav-item">Quack!</span>
-                </a>
-                <span class="tooltip">Quack!</span>
-            </li>
-        
-            <li>
-                <a href="{% url 'logout' %}" style="display: flex; align-items: center;">
-                    <i class="bx bxs-log-out"></i>
-                    <span class="nav-item">log out</span>
-                </a>
-                <span class="tooltip">log out</span>
-            </li>
-            
-            
-        </ul>
-        
+        <i class="bx bx-menu" id="btn"></i>
     </div>
 
-    <div class="main-content">
-        <div class="container">
-            {% block body %}
-            {% endblock %}
-        </div>
+    <div class="user">
+        <img class="user-img" style="width: 50px; height: 50px;" src="static/neologo.png" alt="neocode">
+        <p class="bold">User name</p>
+        <p>Staff</p>
     </div>
+    <ul>
+        <li>
+            <a href="#" style="display: flex; align-items: center;">
+                <i class="bx bxs-check-circle"></i>
+                <span class="nav-item">Take attendance</span>
+            </a>
+            <span class="tooltip">Take attendance</span>
+        </li>
+        
+        <li>
+            <a href="{% url 'studentinfo' %}" style="display: flex; align-items: center;">
+                <i class="bx bxs-info-circle"></i>
+                <span class="nav-item">Student info</span>
+            </a>
+            <span class="tooltip">Student info</span>
+        </li>
 
-</body>
+        <li>
+            <a href="#" style="display: flex; align-items: center;">
+                <i class="bx bxs-party"></i>
+                <span class="nav-item">Network</span>
+            </a>
+            <span class="tooltip">Network</span>
+        </li>
+    
+        <li>
+            <a href="{% url 'duckBot' %}" style="display: flex; align-items: center;">
+                <i class="bx bxs-help-circle"></i>
+                <span class="nav-item">Duck bot</span>
+            </a>
+            <span class="tooltip">Duck bot</span>
+        </li>
+    
+        <li>
+            <a href="{% url 'game_view' %}" style="display: flex; align-items: center;">
+                <i class="bx bxs-invader"></i>
+                <span class="nav-item">Quack!</span>
+            </a>
+            <span class="tooltip">Quack!</span>
+        </li>
+    
+        <li>
+            <a href="{% url 'logout' %}" style="display: flex; align-items: center;">
+                <i class="bx bxs-log-out"></i>
+                <span class="nav-item">log out</span>
+            </a>
+            <span class="tooltip">log out</span>
+        </li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="container">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
 
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
 
-    btn.onclick = function(){
+    btn.onclick = function() {
         sidebar.classList.toggle("active");
     }
-
 </script>
+</body>
 </html>

@@ -17,6 +17,8 @@ from .chatbot.chatbot import respuesta
 
 
 
+
+
 @csrf_exempt
 def chatbot_response(request):
     if request.method == 'POST':
@@ -92,7 +94,7 @@ def staffinfo(request):
 
 def studentinfo(request):
     students = Student.objects.all()
-    return render(request, "staffinfo.html", {"students": students})
+    return render(request, "stuinfo.html", {"students": students})
 
 def game_view(request):
     return render(request, 'game.html')

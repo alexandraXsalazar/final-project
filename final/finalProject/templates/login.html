@@ -8,14 +8,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css" rel="stylesheet" />
     <link rel="stylesheet" href="static/css.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 
-    {% if error_message %}
-    <div class="alert alert-danger alert-dismissible">
-        <strong>Error! </strong> {{ error_message }}
-    </div>
-    {% endif %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            {% if error_message %}
+            swal("Error", "{{error_message}}", "error");
+            {% endif %}
+        });
+    </script>
 <div class="section">
     <div class="container">
         <div class="row full-height justify-content-center">

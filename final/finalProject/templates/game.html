@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego con JavaScript</title>
+    <title>Duck game</title>
+    <link rel="icon" href="static/neologo.png" type="image/x-icon">
     <style>
         body {
             display: flex;
@@ -13,7 +14,7 @@
             height: 100vh;
             margin: 0;
             background-color: #9ca6b0;
-            font-family:"Roboto Slab" sans-serif;
+            font-family: "Roboto Slab", sans-serif;
         }
         
         #game-area {
@@ -24,7 +25,7 @@
             border: 2px solid #ccc;
             border-radius: 3%;
             overflow: hidden;
-            font-family:"Roboto Slab" sans-serif;
+            font-family: "Roboto Slab", sans-serif;
         }
         
         #player {
@@ -50,21 +51,21 @@
         #score {
             background-color: #050A30;
             color: aliceblue;
-            padding:5px 5px ;
+            padding: 5px 5px;
             border-radius: 8%;
             margin-top: 20px;
             font-size: 24px;
-            font-family:"Roboto Slab" sans-serif;
+            font-family: "Roboto Slab", sans-serif;
         }
 
         #lives {
             background-color: #050A30;
             color: aliceblue;
-            padding:5px 5px ;
+            padding: 5px 5px;
             border-radius: 8%;
             margin-top: 20px;
             font-size: 24px;
-            font-family:"Roboto Slab" sans-serif;
+            font-family: "Roboto Slab", sans-serif;
         }
 
         #game-over {
@@ -72,7 +73,7 @@
             font-size: 32px;
             color: rgb(104, 2, 2);
             margin-top: 20px;
-            font-family:"Roboto Slab" sans-serif;
+            font-family: "Roboto Slab", sans-serif;
         }
 
         #start-button {
@@ -81,20 +82,20 @@
             cursor: pointer;
             margin-top: 20px;
             color: aliceblue;
-            background-color:  #050A30;
+            background-color: #050A30;
             border: #050A30;
-            font-family:"Roboto Slab" sans-serif;
+            font-family: "Roboto Slab", sans-serif;
             border-radius: 4%;
-            
         }
     </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
     <div style="display: flex; align-items: center; justify-content: center; row-gap: 30px; column-gap: 100px; margin-bottom: 10px;">
-    <div id="score">Points: 0</div>
-    <div id="lives">Lives: 3</div>
+        <div id="score">Points: 0</div>
+        <div id="lives">Lives: 3</div>
     </div>
-<div id="game-over">Game over!</div>
+    <div id="game-over"></div>
     <div id="game-area">
         <div id="player"></div>
         <div id="falling-object"></div>
@@ -181,6 +182,13 @@
             fallingObject.style.display = 'none';
             startButton.innerText = 'Play Again';
             startButton.style.display = 'block';
+            swal("Game Over!", "Would you like to play again?", {
+                buttons: ["No", "Yes"],
+            }).then((willPlayAgain) => {
+                if (willPlayAgain) {
+                    startGame();
+                }
+            });
         }
         
         function startGame() {

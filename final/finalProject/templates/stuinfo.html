@@ -1,5 +1,5 @@
 <!-- staff_detail.html -->
-{% extends 'layotstu.html' %}
+{% extends 'layoutstaff.html' %}
 
 {% block title %}Staff Info{% endblock %}
 {% block head %}
@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'staffinfo.css' %}">
 {% endblock %}
 {% block body %}
-{% for staff in staffs %}
+{% for student in students %}
 <div class="container">
     <div class="card">
         <div class="content">
@@ -15,12 +15,12 @@
                 <img src="{% static staff.image %}" alt="Staff Image">
             </div>
             <div class="cardContent">
-                <h3> {{staff.user}} <br><span>Neocode Staff</span></h3>
+                <h3> {{student.user}} <br><span> {{student.cycle}} </span></h3>
             </div>
         </div>
         <ul class="sci">
             <li style="--i:1">
-                <h5> {{staff.description}} </h5>
+                <h5> Grupo {{student.class_group}} </h5>
             </li>
             <li style="--i:2">
                 <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
