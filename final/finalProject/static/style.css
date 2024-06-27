@@ -4464,6 +4464,7 @@ input[type="button"].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  font-family: "Roboto Slab", serif;
 }
 
 .nav-link:hover, .nav-link:focus {
@@ -4478,10 +4479,12 @@ input[type="button"].btn-block {
 
 .nav-tabs {
   border-bottom: 1px solid #dee2e6;
+  
 }
 
 .nav-tabs .nav-item {
   margin-bottom: -1px;
+  font-family: "Roboto Slab", serif;
 }
 
 .nav-tabs .nav-link {

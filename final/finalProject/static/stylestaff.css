@@ -4,6 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+h1, h2, h3, span, p {
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+  }
 
 /* Sidebar Navigation Styles */
 .sidebar {

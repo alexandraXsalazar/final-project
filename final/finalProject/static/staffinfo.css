@@ -30,9 +30,13 @@ h1, h2, h3, span, p {
 
 
 
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .card {
-  position: relative;
   width: 250px;
   height: 350px;
   margin: 1em;
@@ -42,7 +46,6 @@ h1, h2, h3, span, p {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   backdrop-filter: blur(40px);
   border: solid 2px transparent;
   background-clip: padding-box;
@@ -55,7 +58,6 @@ h1, h2, h3, span, p {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   opacity: 0.8;
   transition: 0.5s;
 }

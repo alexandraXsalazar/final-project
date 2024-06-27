@@ -5,8 +5,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+html{
+  font-family:"Roboto Slab" sans-serif;
+}
 body{
-	font-family: 'raleway', sans-serif;
+  font-family: "Roboto Slab", serif;
 	font-weight: 300;
 	font-size: 15px;
 	line-height: 1.7;
@@ -142,7 +145,7 @@ h6 span{
   top: 50%;
   left: 0;
   transform: translate3d(0, -50%, 35px) perspective(100px);
-  z-index: 20;
+  z-index: 20
   display: block;
 }
 
