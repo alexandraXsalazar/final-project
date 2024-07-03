@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Profile of {{ cUser.username }}</h1>
+    
+    {% if is_student %}
+        <h2>Student Information</h2>
+        <p>Fingerprint: {{ student.fingerprint }}</p>
+        <p>Cycle: {{ student.cycle.name }}</p>
+        <p>Class Group: {{ student.class_group }}</p>
+        <img src="{{ student.image }}" alt="Student Image">
+    {% elif is_staff %}
+        <h2>Staff Information</h2>
+        <p>Description: {{ staff.description }}</p>
+        <img src="{{ staff.image }}" alt="Staff Image">
+    {% else %}
+        <p>No additional information available.</p>
+    {% endif %}
+
+    <h2>Comments</h2>
+    <div>
+        {% for comment in comments %}
+            <div>
+                <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }}</p>
+                <p><small>{{ comment.created_at }}</small></p>
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+
+    <h3>Add a Comment</h3>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="content" rows="3" placeholder="Add a comment..."></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -15,7 +15,7 @@
                 <img src="{% static staff.image %}" alt="Staff Image">
             </div>
             <div class="cardContent">
-                <h3> {{student.user}} <br><span> {{student.cycle}} </span></h3>
+                <a href="{% url 'profile' user_id=student.user.id %}"><h3> {{student.user}} <br><span> {{student.cycle}} </span></h3></a> 
             </div>
         </div>
         <ul class="sci">

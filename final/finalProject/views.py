@@ -8,12 +8,14 @@ from keras.models import load_model
 from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import Cycle, Pc, Student, Staff, Attendance, StaffFeedback, StuFeedback, User
+from .models import Cycle, Pc, Student, Staff, Attendance, StaffFeedback, StuFeedback, User, Comment,Post, Like
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import check_password, make_password
 import os
 from .chatbot.chatbot import respuesta 
+from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator
 
 
 
@@ -98,3 +100,129 @@ def studentinfo(request):
 
 def game_view(request):
     return render(request, 'game.html')
+
+def takeAtt(request):
+    return render(request, "takeAtt.html",{
+        "cycles" :Cycle.objects.all()
+        })
+
+def profile(request, user_id):
+    cUser = get_object_or_404(User, pk=user_id)
+    try:
+        student = Student.objects.get(user=cUser)
+        is_student = True
+    except Student.DoesNotExist:
+        student = None
+        is_student = False
+
+    try:
+        staff = Staff.objects.get(user=cUser)
+        is_staff = True
+    except Staff.DoesNotExist:
+        staff = None
+        is_staff = False
+
+    comments = Comment.objects.filter(profile_user=cUser).order_by('-created_at')
+
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        if content:
+            Comment.objects.create(user=request.user, profile_user=cUser, content=content)
+            return redirect('profile', user_id=cUser.id)
+
+    context = {
+        "cUser": cUser,
+        "is_student": is_student,
+        "student": student,
+        "is_staff": is_staff,
+        "staff": staff,
+        "comments": comments,
+    }
+
+    return render(request, "profile.html", context)
+
+
+def network(request):
+    allposts = Post.objects.all().order_by('-id')
+    paginator = Paginator(allposts, 10)
+    page_number = request.GET.get('page')
+    postsPage = paginator.get_page(page_number)
+    liked_dict = {}
+
+    is_student = False
+    is_staff = False
+
+    if request.user.is_authenticated:
+        likes = Like.objects.filter(user=request.user)
+        liked_dict = {like.post.id: True for like in likes}
+        
+        try:
+            Student.objects.get(user=request.user)
+            is_student = True
+        except Student.DoesNotExist:
+            pass
+
+        try:
+            Staff.objects.get(user=request.user)
+            is_staff = True
+        except Staff.DoesNotExist:
+            pass
+
+    post_with_likes = []
+    for post in postsPage:
+        like_count = post.likes.count()
+        post_with_likes.append({'post': post, 'likes': like_count})
+
+    return render(request, "network.html", {
+        "postsPage": postsPage,
+        "liked": liked_dict,
+        "posts": post_with_likes,
+        "is_student": is_student,
+        "is_staff": is_staff,
+    })
+
+
+def new_post(request):
+    if request.method == "POST":
+        content = request.POST.get("newpost-content")
+        if content:
+            if request.user.is_authenticated:
+                cUser = request.user  # Use request.user directly if authenticated
+                is_student = False
+                is_staff = False
+
+                # Check if the user is a student
+                try:
+                    student = Student.objects.get(user=cUser)
+                    is_student = True
+                except Student.DoesNotExist:
+                    pass
+
+                # Check if the user is staff
+                try:
+                    staff = Staff.objects.get(user=cUser)
+                    is_staff = True
+                except Staff.DoesNotExist:
+                    pass
+                newPost = Post(user=cUser, content=content)
+                newPost.save()
+                return HttpResponseRedirect(reverse('network')) 
+            else:
+                return render(request, "network.html", {
+                    "error_message": "User must be authenticated to post."
+                })
+        else:
+            return render(request, "network.html", {
+                "error_message": "Post content cannot be empty."
+            })
+    else:
+        return HttpResponseRedirect(reverse('network'))
+    
+def layoutstu(request):
+    # Aquí puedes definir la lógica específica para el layout de los estudiantes
+    return render(request, "layoutstu.html")
+
+
+def layoutstaff(request):
+    # Aquí puedes definir la lógica específica para el layout del personal
+    return render(request, "layoutstaff.html")

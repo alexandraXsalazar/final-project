@@ -1,5 +1,5 @@
 <!-- staff_detail.html -->
-{% extends 'layotstu.html' %}
+{% extends 'layoutstaff.html' %}
 
 {% block title %}Staff Info{% endblock %}
 {% block head %}
@@ -12,10 +12,10 @@
     <div class="card">
         <div class="content">
             <div class="img">
-                <img src="{% static staff.image %}" alt="Staff Image">
+                <img src="static/neologo.png" alt="Staff Image">
             </div>
             <div class="cardContent">
-                <h3> {{staff.user}} <br><span>Neocode Staff</span></h3>
+               <a href="{% url 'profile' user_id=staff.user.id %}"><h3> {{staff.user}} <br><span>Neocode Staff</span></h3></a> 
             </div>
         </div>
         <ul class="sci">

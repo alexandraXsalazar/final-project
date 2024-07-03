@@ -1,0 +1,24 @@
+<!-- staff_detail.html -->
+{% extends 'layoutstaff.html' %}
+
+{% block title %}Take attendance{% endblock %}
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'staffinfo.css' %}">
+{% endblock %}
+{% block body %}
+<form action="{% url 'takeAtt'%}" method="post">
+    {% csrf_token %}
+    <input type="text" name="fecha" id="fecha" placeholder="ingrese la fecha">
+    <select class="form-control form-control-sm mx-auto" style="width: 150px;" name="cycle" id="cycle">
+        {% for cycle in cycles %}
+            <option value="{{ category.name }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    
+
+</form>
+
+
+
+{% endblock %}
