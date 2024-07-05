@@ -10,12 +10,12 @@
 <div class="container">
     {% for student in students %}
     <div class="card">
-        <div class="content">
+        <div class="content" >
             <div class="img">
-                <img src="{% static staff.image %}" alt="Staff Image">
+                <img src="static/neologo.png" alt="Staff Image">
             </div>
-            <div class="cardContent">
-                <a href="{% url 'profile' user_id=student.user.id %}"><h3> {{student.user}} <br><span> {{student.cycle}} </span></h3></a> 
+            <div class="cardContent" style="text-decoration-line: none !important;">
+                <a href="{% url 'profile' user_id=student.user.id %}" style="text-decoration-line: none !important;"><h3 > {{student.user}} <br><span> {{student.cycle}} </span></h3></a> 
             </div>
         </div>
         <ul class="sci">

@@ -1,42 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    {% load static %}
+    <style>
+        body {
+            background-color: #F0F8FF; /* Updated background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .card {
+            background: linear-gradient(135deg, #050A30, #0D1A4D);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px; /* Adjusted width */
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 20px; /* Added margin */
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        h1, h2, h3 {
+            margin: 20px 0;
+            font-weight: 700;
+        }
+        p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .image img {
+            transition: all 0.5s;
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+            margin: 20px 0;
+            border: 4px solid white;
+        }
+        .card:hover .image img {
+            transform: scale(1.1);
+        }
+        .info-section {
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .info-section p {
+            font-size: 16px;
+            font-weight: 300;
+        }
+        .info-section .title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        form {
+            margin-top: 30px;
+            text-align: center; /* Center align the form */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align items vertically */
+        }
+        textarea {
+            width: 100%;
+            max-width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            resize: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+        button {
+            padding: 12px 24px; /* Adjusted padding for a bit more square shape */
+            border: none;
+            border-radius: 8px; /* Rounded corners */
+            background-color: #FEDE00;
+            color: #050A30;
+            font-size: 16px;
+            font-weight: 400; /* Normal font weight */
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+            width: 100%; /* Full width */
+            max-width: 200px; /* Limit maximum width */
+        }
+        button:hover {
+            color: white; /* Change text color to white on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .comment {
+            margin: 20px 0;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .comment p {
+            margin: 5px 0;
+        }
+        .comment strong {
+            color: #FFD700;
+        }
+        .comment small {
+            color: #ccc;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .card {
+                padding: 20px;
+            }
+            .image img {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                padding: 15px;
+            }
+            .image img {
+                width: 100px;
+            }
+            button {
+                padding: 10px 20px; /* Further smaller padding */
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Profile of {{ cUser.username }}</h1>
-    
-    {% if is_student %}
-        <h2>Student Information</h2>
-        <p>Fingerprint: {{ student.fingerprint }}</p>
-        <p>Cycle: {{ student.cycle.name }}</p>
-        <p>Class Group: {{ student.class_group }}</p>
-        <img src="{{ student.image }}" alt="Student Image">
-    {% elif is_staff %}
-        <h2>Staff Information</h2>
-        <p>Description: {{ staff.description }}</p>
-        <img src="{{ staff.image }}" alt="Staff Image">
-    {% else %}
-        <p>No additional information available.</p>
-    {% endif %}
-
-    <h2>Comments</h2>
-    <div>
-        {% for comment in comments %}
-            <div>
-                <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }}</p>
-                <p><small>{{ comment.created_at }}</small></p>
+    <div class="card">
+        <h1>Profile of {{ cUser.username }}</h1>
+        
+        {% if is_student %}
+        <br>
+        <h1>Profile of {{ cUser.username }}</h1>
+            <div class="info-section">
+                <h2 class="title">Student Information</h2>
+                <p>Fingerprint: {{ student.fingerprint }}</p>
+                <p>Cycle: {{ student.cycle.name }}</p>
+                <p>Class Group: {{ student.class_group }}</p>
+                <div class="image"><img src="{% static 'neologo.png' %}" alt="Student Image"></div>
             </div>
-        {% empty %}
-            <p>No comments yet.</p>
-        {% endfor %}
-    </div>
+        {% elif is_staff %}
+        <br>
+        <h1>Profile of {{ cUser.username }}</h1>
+            <div class="info-section">
+                <h2 class="title">Staff Information</h2>
+                <p>Description: {{ staff.description }}</p>
+                <div class="image"><img src="{% static 'neologo.png' %}" alt="Staff Image"></div>
+            </div>
+        {% else %}
+            <p>No additional information available.</p>
+        {% endif %}
 
-    <h3>Add a Comment</h3>
-    <form method="post">
-        {% csrf_token %}
-        <textarea name="content" rows="3" placeholder="Add a comment..."></textarea><br>
-        <button type="submit">Submit</button>
-    </form>
+        <!-- Mostrar comentarios existentes -->
+        <h2>Feedbacks</h2>
+        <div>
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="comment">
+                        <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }}</p>
+                        <p><small>{{ comment.created_at|date:"F d, Y H:i" }}</small></p>
+                    </div>
+                {% empty %}
+                    <p>No feedback yet.</p>
+                {% endfor %}
+            {% else %}
+                <p>No feedback yet.</p>
+            {% endif %}
+        </div>
+
+        <!-- Agregar un nuevo comentario -->
+        <h3>Add a Feedback</h3>
+        <form method="post">
+            {% csrf_token %}
+            <textarea name="content" rows="3" placeholder="Add your feedback"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -14,8 +14,8 @@
             <div class="img">
                 <img src="static/neologo.png" alt="Staff Image">
             </div>
-            <div class="cardContent">
-               <a href="{% url 'profile' user_id=staff.user.id %}"><h3> {{staff.user}} <br><span>Neocode Staff</span></h3></a> 
+            <div class="cardContent" style="text-decoration-line: none !important;">
+            <a href="{% url 'profile' user_id=staff.user.id %}" style="text-decoration-line: none !important;"><h3> {{staff.user}} <br><span style="text-decoration-line: none !important;">Neocode Staff</span></h3></a> 
             </div>
         </div>
         <ul class="sci">

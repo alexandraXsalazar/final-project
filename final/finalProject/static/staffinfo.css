@@ -52,10 +52,7 @@ h1, h2, h3, span, p {
 
 .content {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+  display: block !important;
   opacity: 0.8;
   transition: 0.5s;
 }
@@ -87,12 +84,15 @@ h1, h2, h3, span, p {
   text-align: center;
   margin: 20px 0 10px;
   line-height: 1.1em;
+  text-decoration-line: none !important;
+
 }
 
 .cardContent span {
   font-size: 12px;
   font-weight: 300;
   text-transform: initial;
+  text-decoration-line: none !important;
 }
 
 .sci {

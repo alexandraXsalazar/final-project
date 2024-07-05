@@ -108,28 +108,32 @@ def takeAtt(request):
 
 def profile(request, user_id):
     cUser = get_object_or_404(User, pk=user_id)
+    
     try:
         student = Student.objects.get(user=cUser)
         is_student = True
     except Student.DoesNotExist:
         student = None
         is_student = False
-
+    
     try:
         staff = Staff.objects.get(user=cUser)
         is_staff = True
     except Staff.DoesNotExist:
         staff = None
         is_staff = False
-
+    
     comments = Comment.objects.filter(profile_user=cUser).order_by('-created_at')
-
+    
     if request.method == 'POST':
         content = request.POST.get('content')
         if content:
-            Comment.objects.create(user=request.user, profile_user=cUser, content=content)
-            return redirect('profile', user_id=cUser.id)
-
+            if isinstance(request.user, User):
+                Comment.objects.create(user=request.user, profile_user=cUser, content=content, created_at=datetime.now())
+                return redirect('profile', user_id=cUser.id)
+            else:
+                pass
+    
     context = {
         "cUser": cUser,
         "is_student": is_student,
@@ -138,7 +142,7 @@ def profile(request, user_id):
         "staff": staff,
         "comments": comments,
     }
-
+    
     return render(request, "profile.html", context)
 
 
@@ -219,10 +223,8 @@ def new_post(request):
         return HttpResponseRedirect(reverse('network'))
     
 def layoutstu(request):
-    # Aquí puedes definir la lógica específica para el layout de los estudiantes
     return render(request, "layoutstu.html")
 
 
 def layoutstaff(request):
-    # Aquí puedes definir la lógica específica para el layout del personal
     return render(request, "layoutstaff.html")

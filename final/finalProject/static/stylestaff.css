@@ -16,7 +16,7 @@ h1, h2, h3, span, p {
     top: 0;
     left: 0;
     height: 100%;
-    width: 80px;
+    width: 100px;
     background-color: #050A30;
     padding: 0.4rem 0.8rem;
     transition: all 0.3s ease;

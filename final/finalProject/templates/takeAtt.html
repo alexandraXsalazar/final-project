@@ -1,24 +1,74 @@
-<!-- staff_detail.html -->
 {% extends 'layoutstaff.html' %}
 
-{% block title %}Take attendance{% endblock %}
+{% block title %}Take Attendance{% endblock %}
+
 {% block head %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'staffinfo.css' %}">
-{% endblock %}
-{% block body %}
-<form action="{% url 'takeAtt'%}" method="post">
-    {% csrf_token %}
-    <input type="text" name="fecha" id="fecha" placeholder="ingrese la fecha">
-    <select class="form-control form-control-sm mx-auto" style="width: 150px;" name="cycle" id="cycle">
-        {% for cycle in cycles %}
-            <option value="{{ category.name }}">{{ category.name }}</option>
-        {% endfor %}
-    </select>
+    {% load static %}
     
+<link rel="stylesheet" href="{% static 'staffinfo.css' %}">
+    <link rel="stylesheet" href="{% static 'netw/styles.css' %}">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Centra verticalmente en la página */
+            background-color: #F0F8FF;
+        }
 
-</form>
+        .form-container {
+            width: 100%;
+            max-width: 400px; /* Ancho máximo del formulario */
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
+        .form-group {
+            margin-bottom: 20px;
+        }
 
+        .btn-primary {
+            background-color: #050A30;
+            color: #F0F8FF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
 
+        .btn-primary:hover {
+            background-color: #F0F8FF;
+            color: #050A30;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="form-container">
+        <h1 class="text-center mb-4">Take Attendance</h1>
+        <form action="{% url 'takeAtt' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Ingrese la fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="cycle">Ciclo:</label>
+                <select class="form-control" id="cycle" name="cycle" required>
+                    {% for cycle in cycles %}
+                        <option value="{{ cycle.name }}">{{ cycle.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+        </form>
+        <tr></tr>
+    </div>
+</div>
 {% endblock %}
