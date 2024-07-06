@@ -20,6 +20,7 @@
             background: linear-gradient(135deg, #050A30, #0D1A4D);
             color: white;
             padding: 30px;
+            padding-top: 20%;
             border-radius: 15px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
             width: 100%;
@@ -150,7 +151,6 @@
         
         {% if is_student %}
         <br>
-        <h1>Profile of {{ cUser.username }}</h1>
             <div class="info-section">
                 <h2 class="title">Student Information</h2>
                 <p>Fingerprint: {{ student.fingerprint }}</p>

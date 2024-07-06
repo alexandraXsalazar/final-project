@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'corsheaders',  # Add 'corsheaders' to your installed apps
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Add CORS middleware
+    'django.middleware.common.CommonMiddleware',  # Ensure CommonMiddleware is before CORS middleware
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://192.168.88.94:5000",  # Add your frontend URL here without trailing slash
+]
+
+
 
 ROOT_URLCONF = 'final.urls'
 

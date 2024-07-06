@@ -228,3 +228,29 @@ def layoutstu(request):
 
 def layoutstaff(request):
     return render(request, "layoutstaff.html")
+
+def buscar_info(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            print('Data received from client:', data)
+
+            fingerprint_to_check = data.get('fingerprint', None)
+            if fingerprint_to_check is None:
+                return JsonResponse({'status': 'failed', 'message': 'No fingerprint ID provided'}, status=400)
+
+            student = Student.objects.filter(fingerprint=fingerprint_to_check).first()
+
+            if student is not None:
+
+                return render(request, 'takeAtt.html', {'student': student})
+            else:
+                return JsonResponse({'status': 'failed', 'message': 'Fingerprint not found in database'})
+
+        except Exception as e:
+            return JsonResponse({'status': 'failed', 'message': str(e)}, status=500)
+
+    return JsonResponse({'status': 'failed', 'message': 'Invalid method'}, status=405)
+
+def registro(request):
+    return render(request,"registro.html")

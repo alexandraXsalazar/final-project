@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 import datetime
+
 class User(AbstractUser):
     custom_groups = models.ManyToManyField('auth.Group', related_name='custom_users')
     custom_permissions = models.ManyToManyField('auth.Permission', related_name='custom_permissions')

@@ -13,7 +13,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh; /* Centra verticalmente en la página */
-            background-color: #F0F8FF;
         }
 
         .form-container {
@@ -54,21 +53,56 @@
         <h1 class="text-center mb-4">Take Attendance</h1>
         <form action="{% url 'takeAtt' %}" method="post">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="fecha">Fecha:</label>
-                <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Ingrese la fecha" required>
-            </div>
-            <div class="form-group">
-                <label for="cycle">Ciclo:</label>
-                <select class="form-control" id="cycle" name="cycle" required>
-                    {% for cycle in cycles %}
-                        <option value="{{ cycle.name }}">{{ cycle.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            <button  type="submit" class="btn btn-primary btn-block">Agregar</button>
         </form>
+        <h1>Student Information</h1>
+        <p><strong>Name:</strong> {{ student.user.username }}</p>
+        <p><strong>Fingerprint:</strong> {{ student.fingerprint }}</p>
+        <p><strong>Cycle:</strong> {{ student.cycle }}</p>
+        <p><strong>Class Group:</strong> {{ student.class_group }}</p>
+        <button id="agregar">agregar estudiantes</button>
         <tr></tr>
     </div>
+    <script>
+
+function getCookie(name){
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`${name}=`);
+
+    if (parts.length == 2) return 
+    parts.pop().split(';').shift();
+}
+
+const btn = document.getElementById("agregar");
+
+btn.addEventListener('click', function() {
+    
+    
+    fetch('http://192.168.242.108:5000/search_fingerprint')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        // Handle the data as needed
+        const csrfToken = getCookie("csrftoken")
+        
+      fetch('/buscar_info', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json','X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify({ 'data': data })  
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        // Handle errors, such as showing an error message to the user
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      // Handle errors, such as showing an error message to the user
+    });
+});
+      </script>
+    
 </div>
 {% endblock %}

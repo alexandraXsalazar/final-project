@@ -17,5 +17,6 @@ urlpatterns = [
     path("new_post", views.new_post, name="new_post"), 
     path('layoutstu/', views.layoutstu, name='layoutstu'),
     path('layoutstaff/', views.layoutstaff, name='layoutstaff'),
-    
+    path('buscar_info', views.buscar_info, name='buscar_info'),
+    path('registro', views.registro, name='registro'),
 ]
