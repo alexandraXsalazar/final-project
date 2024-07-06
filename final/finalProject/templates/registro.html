@@ -1,17 +1,84 @@
-{% extends 'layoutstaff.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Fingerprint</title>
+    <link rel="icon" href="static/neologo.png" type="image/x-icon">
 
-{% block title %}Take Attendance{% endblock %}
-
-{% block head %}
-    {% load static %}
-{% endblock %}
-
-{% block body %}
-
-    <button id="registrar"></button>
-
-
-    <script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
         
-    </script>
-{% endblock %}
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: url('static/fondo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .background-blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto Slab', serif;
+        }
+        
+        p, label, input, button {
+            font-family: 'Quantico', sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Centra verticalmente en la página */
+            position: relative;
+            z-index: 2;
+        }
+        
+        .form-container {
+            width: 100%;
+            max-width: 600px; /* Ancho máximo del formulario incrementado */
+            padding: 40px; /* Aumenta el relleno para hacer el contenedor más grande */
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centrar el contenido dentro del contenedor */
+        }
+        
+        .btn-primary {
+            background-color: #050A30;
+            color: #F0F8FF;
+            border: none;
+            padding: 15px 30px; /* Incrementa el relleno del botón */
+            border-radius: 8px;
+            font-size: 18px; /* Aumenta el tamaño de la fuente del botón */
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: #050A30;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur"></div>
+    <div class="container">
+        <div class="form-container">
+            <button id="registrar" class="btn-primary">Registrar</button>
+        </div>
+    </div>
+</body>
+</html>

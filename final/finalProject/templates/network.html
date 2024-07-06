@@ -4,6 +4,15 @@
 <style>
     body {
         background-color: #F0F8FF;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Roboto Slab', serif;
+    }
+    
+    p, label, input, button {
+        font-family: 'Quantico', sans-serif;
     }
 
     .post-div {
@@ -155,16 +164,5 @@
             {% endif %}
         </ul>
     </nav>
-
-    <!-- Link for returning home -->
-    {% if is_student %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'layoutstu' %}">return to home</a>
-    </li>
-    {% elif is_staff %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'layoutstaff' %}">return to home</a>
-    </li>
-    {% endif %}
 </div>
 {% endblock %}

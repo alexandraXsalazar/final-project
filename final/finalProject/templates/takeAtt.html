@@ -1,108 +1,179 @@
-{% extends 'layoutstaff.html' %}
 
-{% block title %}Take Attendance{% endblock %}
 
-{% block head %}
-    {% load static %}
-    
-<link rel="stylesheet" href="{% static 'staffinfo.css' %}">
-    <link rel="stylesheet" href="{% static 'netw/styles.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Attendance</title>
+    <link rel="icon" href="static/neologo.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
     <style>
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Centra verticalmente en la página */
+        @import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: url('static/fondo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .background-blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(10px);
+            z-index: 1;
         }
 
-        .form-container {
-            width: 100%;
-            max-width: 400px; /* Ancho máximo del formulario */
-            padding: 20px;
-            background-color: #FFFFFF;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .btn-primary {
-            background-color: #050A30;
-            color: #F0F8FF;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: #F0F8FF;
-            color: #050A30;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-{% endblock %}
-
-{% block body %}
-<div class="container">
-    <div class="form-container">
-        <h1 class="text-center mb-4">Take Attendance</h1>
-        <form action="{% url 'takeAtt' %}" method="post">
-            {% csrf_token %}
-            <button  type="submit" class="btn btn-primary btn-block">Agregar</button>
-        </form>
-        <h1>Student Information</h1>
-        <p><strong>Name:</strong> {{ student.user.username }}</p>
-        <p><strong>Fingerprint:</strong> {{ student.fingerprint }}</p>
-        <p><strong>Cycle:</strong> {{ student.cycle }}</p>
-        <p><strong>Class Group:</strong> {{ student.class_group }}</p>
-        <button id="agregar">agregar estudiantes</button>
-        <tr></tr>
-    </div>
-    <script>
-
-function getCookie(name){
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`${name}=`);
-
-    if (parts.length == 2) return 
-    parts.pop().split(';').shift();
+.top-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #050A30;
+    color: #F0F8FF;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    z-index: 3;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-const btn = document.getElementById("agregar");
+.top-link:hover {
+    background-color: #050A30;
+    color: #F0F8FF;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
 
-btn.addEventListener('click', function() {
+.background-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+}
+
+p, label, input, button {
+    font-family: 'Quantico', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Centra verticalmente en la página */
+    position: relative;
+    z-index: 2;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px; /* Ancho máximo del formulario */
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #050A30;
+    color: #F0F8FF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #050A30;
+    color: #F0F8FF;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
+</head>
+<body>
     
+    <div class="background-blur"></div>
+    <a href="/registro" class="top-link">Registro</a>
+
+    <div class="container">
+        <div class="form-container">
+            <h1 class="text-center mb-4">Take Attendance</h1>
+            <form action="{% url 'takeAtt' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+            </form>
+            <h1>Student Information</h1>
+            <p><strong>Name:</strong> {{ student.user.username }}</p>
+            <p><strong>Fingerprint:</strong> {{ student.fingerprint }}</p>
+            <p><strong>Cycle:</strong> {{ student.cycle }}</p>
+            <p><strong>Class Group:</strong> {{ student.class_group }}</p>
+            <button id="agregar" class="btn btn-primary btn-block">agregar estudiantes</button>
+        </div>
+    </div>
+        <script>
     
-    fetch('http://192.168.242.108:5000/search_fingerprint')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        // Handle the data as needed
-        const csrfToken = getCookie("csrftoken")
+    function getCookie(name){
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`${name}=`);
+    
+        if (parts.length == 2) return 
+        parts.pop().split(';').shift();
+    }
+    
+    const btn = document.getElementById("agregar");
+    
+    btn.addEventListener('click', function() {
         
-      fetch('/buscar_info', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json','X-CSRFToken': csrfToken
-        },
-        body: JSON.stringify({ 'data': data })  
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-        // Handle errors, such as showing an error message to the user
-      });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      // Handle errors, such as showing an error message to the user
+        
+        fetch('http://192.168.242.108:5000/search_fingerprint')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Handle the data as needed
+            const csrfToken = getCookie("csrftoken")
+            
+          fetch('/buscar_info', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json','X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ 'data': data })  
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+            // Handle errors, such as showing an error message to the user
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          // Handle errors, such as showing an error message to the user
+        });
     });
-});
-      </script>
-    
-</div>
-{% endblock %}
+          </script>
+        
+    </div>
+</body>
+</html>

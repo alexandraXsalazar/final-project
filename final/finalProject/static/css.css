@@ -8,8 +8,17 @@
 html{
   font-family:"Roboto Slab" sans-serif;
 }
-body{
-  font-family: "Roboto Slab", serif;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', serif;
+}
+
+p, label, input, button {
+  font-family: 'Quantico', sans-serif;
+}
+
+body {
+
+  font-family: 'Raleway', sans-serif;
 	font-weight: 300;
 	font-size: 15px;
 	line-height: 1.7;
