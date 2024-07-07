@@ -1,36 +1,102 @@
-# Proyecto Final: Sistema de un curso(NeoCode) con Gestión de Asistencia usando huella digital y Desempeño Estudiantil
+# Final Project: NeoCode Course System with Attendance Management using Fingerprint Technology and Student Performance
 
-## Descripción del Proyecto:
+## Project Description:
 
-El proyecto consiste en desarrollar un sistema  para un curso llamado NeoCode, su mas importante funcionalidad es la gestión de asistencia estudiantil utilizando tecnología Arduino con lector de huellas digitales. Este sistema registrará tanto la hora de entrada como la de salida de los estudiantes. Además, se integrará con Django, Python y SQL para proporcionar a los profesores herramientas adicionales para evaluar el desempeño de los alumnos.
+The project aims to develop a system for a course named NeoCode, focusing on efficient student attendance management using raspberrypy technology with fingerprint readers. This system will record both entry and exit times for students. Additionally, it will integrate with Django, Python, and SQL to provide teachers with additional tools to evaluate student performance.
 
-## Características Principales:
+## Key Features:
 
-1. **Gestión de Asistencia**: Utilización de Arduino con lector de huellas digitales para registrar la asistencia de los estudiantes de manera eficiente y precisa.
+1. **Attendance Management**: Utilization of raspberrypy with fingerprint readers to efficiently and accurately record student attendance.
 
-2. **Perfiles de Usuario**: Los usuarios se dividirán en tres tipos: admin, estudiantes y profesores. Cada tipo de usuario tendrá acceso a funciones específicas y a su propio perfil personalizado.
+2. **User Profiles**: Users will be categorized into three types: admin, students, and teachers. Each user type will have access to specific functions and their own customized profile.
 
-4. **Observaciones de Desempeño**: Los profesores tendrán la capacidad de agregar observaciones sobre el desempeño de los estudiantes, las cuales estarán disponibles únicamente para otros profesores, dee esta misma manera los estudiantes serán capaces de añadir observaciones a lo profesore.
+3. **Performance Observations**: Teachers can add observations about student performance, visible only to other teachers. Similarly, students can add observations about teachers.
 
-## Funcionalidades Adicionales:
+## Additional Features:
 
-1. **Análisis de Datos**: Informes interactivos sobre tendencias de asistencia.
+1. **Data Analysis**: Interactive reports on attendance trends.
 
-2. **Creación de Informes**: Desarrollo de informes interactivos con gráficos y tablas que muestren la asistencia y el desempeño de los estudiantes. Por ejemplo, gráficos de barras que comparen la asistencia promedio por clase.
+2. **Report Generation**: Development of interactive reports with graphs and tables displaying attendance and student performance. For example, bar charts comparing average class attendance.
 
-3. **Notificaciones Automáticas**: Implementación de un sistema de notificaciones que informe a los estudiantes sobre su asistencia y a los profesores sobre las actualizaciones de desempeño estudiantil.
+3. **Automatic Notifications**: Implementation of a notification system to inform students about their attendance and teachers about student performance updates.
 
-4. **Redes Sociales Educativas**: Funcionalidad que permita a los estudiantes y profesores interactuar y colaborar de manera similar a una red social, compartiendo recursos, participando en debates y formando comunidades de aprendizaje.
+4. **Educational Social Networks**: Functionality allowing students and teachers to interact and collaborate similarly to a social network, sharing resources, participating in discussions, and forming learning communities.
 
-5. **Asiste de inteligencia Virtual**:  Asistente virtual que pueda responder preguntas frecuentes de los estudiantes y profesores.
-   
-6. **Mini juego**: los jugadores controlarán un pato que debe atrapar bugs que caen desde la parte superior de la pantalla. El objetivo es atrapar la mayor cantidad de bugs posible antes de que lleguen al suelo.
+5. **Virtual Assistant**: A virtual assistant capable of responding to frequently asked questions from students and teachers.
 
-## Tecnologías Utilizadas:
+6. **Mini Game**: Players control a duck that must catch falling bugs. The goal is to catch as many bugs as possible before they reach the ground.
 
-- Arduino con lector de huellas digitales
-- Django, Python y SQL para el desarrollo web
-- Chat GPT API
+## Technologies Used:
+
+-  Raspberrypy with fingerprint readers
+- Django, Python, and SQL for web development
+
+## Run Locally
+
+### Clone the project
+
+```bash
+git https://github.com/Alex000127/final-project.git
+```
+
+### Set up the virtual environment (optional)
+
+```bash
+pip install virtualenv
+```
+
+```bash
+python -m venv venv
+```
+or
+```bash
+virtualenv venv
+```
+
+```bash
+.\venv\Scripts\activate
+```
+### Navigate to the project directory
+
+```bash
+cd final-project
+```
+
+### Move to the ramaTemp branch
+
+```bash
+git checkout ramaTemp
+```
+
+### Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+
+### Apply migrations
+
+```bash
+python manage.py migrate
+```
+
+### Start the server
+
+```bash
+python manage.py runserver
+```
+
+### Navigate to the project directory
+
+```bash
+cd final
+```
+
+## Author
+
+- [Alexandra Salazar](https://github.com/Alex000127)
+
 
   ## Color Reference
 
@@ -52,5 +118,5 @@ El proyecto consiste en desarrollar un sistema  para un curso llamado NeoCode, s
 - Roboto Slab
 - Quantica
 - Raleway
-=======
+
 
