@@ -58,7 +58,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://192.168.88.94:5000",  # Add your frontend URL here without trailing slash
+    "http://169.254.57.28:5000",  # Add your frontend URL here without trailing slash
 ]
 
 

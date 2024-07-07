@@ -38,7 +38,7 @@ class Pc(models.Model):
 
 class Student(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="students")
-    fingerprint = models.CharField(max_length=50)
+    fingerprint = models.IntegerField()
     cycle = models.ForeignKey(Cycle, on_delete=models.CASCADE, related_name="students")
     class_group = models.CharField(max_length=2)    
     image = models.CharField(max_length=1000, default='static/neologo.png') 

@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="{% static 'staffinfo.css' %}">
 {% endblock %}
 {% block body %}
+{% for student in students %}
 <div class="container">
-    {% for student in students %}
     <div class="card">
         <div class="content" >
             <div class="img">
@@ -27,6 +27,6 @@
             </li>
         </ul>
     </div>
-    {% endfor %}
 </div>
+{% endfor %}
 {% endblock %}

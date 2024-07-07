@@ -16,6 +16,7 @@ import os
 from .chatbot.chatbot import respuesta 
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
+from datetime import *
 
 
 
@@ -151,76 +152,23 @@ def network(request):
     paginator = Paginator(allposts, 10)
     page_number = request.GET.get('page')
     postsPage = paginator.get_page(page_number)
-    liked_dict = {}
-
-    is_student = False
-    is_staff = False
-
-    if request.user.is_authenticated:
-        likes = Like.objects.filter(user=request.user)
-        liked_dict = {like.post.id: True for like in likes}
-        
-        try:
-            Student.objects.get(user=request.user)
-            is_student = True
-        except Student.DoesNotExist:
-            pass
-
-        try:
-            Staff.objects.get(user=request.user)
-            is_staff = True
-        except Staff.DoesNotExist:
-            pass
-
-    post_with_likes = []
-    for post in postsPage:
-        like_count = post.likes.count()
-        post_with_likes.append({'post': post, 'likes': like_count})
 
     return render(request, "network.html", {
         "postsPage": postsPage,
-        "liked": liked_dict,
-        "posts": post_with_likes,
-        "is_student": is_student,
-        "is_staff": is_staff,
     })
-
-
+    
 def new_post(request):
     if request.method == "POST":
-        content = request.POST.get("newpost-content")
-        if content:
-            if request.user.is_authenticated:
-                cUser = request.user  # Use request.user directly if authenticated
-                is_student = False
-                is_staff = False
-
-                # Check if the user is a student
-                try:
-                    student = Student.objects.get(user=cUser)
-                    is_student = True
-                except Student.DoesNotExist:
-                    pass
-
-                # Check if the user is staff
-                try:
-                    staff = Staff.objects.get(user=cUser)
-                    is_staff = True
-                except Staff.DoesNotExist:
-                    pass
-                newPost = Post(user=cUser, content=content)
-                newPost.save()
-                return HttpResponseRedirect(reverse('network')) 
-            else:
-                return render(request, "network.html", {
-                    "error_message": "User must be authenticated to post."
-                })
-        else:
-            return render(request, "network.html", {
-                "error_message": "Post content cannot be empty."
-            })
-    else:
+        # Ensure to fetch the actual user instance
+        cUser = request.user if isinstance(request.user, User) else None
+        if cUser:
+            content = request.POST.get("newpost-content")
+            newPost = Post(user=cUser, content=content)
+            newPost.save()
+        
         return HttpResponseRedirect(reverse('network'))
+
+    return HttpResponseRedirect(reverse('network'))
     
 def layoutstu(request):
     return render(request, "layoutstu.html")
@@ -229,6 +177,7 @@ def layoutstu(request):
 def layoutstaff(request):
     return render(request, "layoutstaff.html")
 
+@csrf_exempt
 def buscar_info(request):
     if request.method == 'POST':
         try:
@@ -237,13 +186,19 @@ def buscar_info(request):
 
             fingerprint_to_check = data.get('fingerprint', None)
             if fingerprint_to_check is None:
-                return JsonResponse({'status': 'failed', 'message': 'No fingerprint ID provided'}, status=400)
+                return JsonResponse({'status': 'failed', 'message': 'fingerprint ID not valid'}, status=400)
 
-            student = Student.objects.filter(fingerprint=fingerprint_to_check).first()
-
+            print(fingerprint_to_check)
+            student = Student.objects.get(fingerprint=fingerprint_to_check)
+            print(student)
             if student is not None:
-
-                return render(request, 'takeAtt.html', {'student': student})
+                student_json = {
+                    'username': student.user.username,
+                    'fingerprint': student.fingerprint,
+                    'cycle': student.cycle.name,
+                    'class_group': student.class_group
+                }
+                return JsonResponse({'status': 'success', 'student': student_json})
             else:
                 return JsonResponse({'status': 'failed', 'message': 'Fingerprint not found in database'})
 
